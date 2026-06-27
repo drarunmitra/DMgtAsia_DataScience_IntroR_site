@@ -1,0 +1,38 @@
+---
+title: "Exercise 2: Importing and Exporting Data into R"
+format: html
+---
+
+::: {style="text-align:justify"}
+
+In this exercise, you will learn how to handle data import and export in R, a fundamental skill for any data analysis project. You will start by downloading a sample dataset (low_birth_weight.csv), save it to your R Project folder, and then explore the different data formats commonly used in research. Following this, you will practice importing the dataset into R and exporting it in a different format (.rds). This exercise will help you understand how to efficiently manage datasets in R and prepare them for further analysis.
+
+:::
+
+### **Question 1:** Download the Low Birth Weight Data {.unnumbered}
+
+-   Click [here to download the dataset](https://drive.usercontent.google.com/u/0/uc?id=1DDkS4pdyt41Q9f4cB42yfusquFjwZ7kL&export=download).
+
+### **Question 2:** Save it into Your Data Folder in R Project {.unnumbered}
+
+-   Save the downloaded file into the `data` folder within your R Project.
+
+### **Question 3:** What is the Low Birth Weight Data Format? {.unnumbered}
+
+-   Determine the format of the downloaded dataset.
+
+### **Question 4:** Which Data Formats are You Familiar With? {.unnumbered}
+
+-   List the data formats you have used before (e.g., csv, xlsx).
+
+### **Question 5:** Import `low_birth_weight.csv` File into R {.unnumbered}
+
+-   Use R to import the `low_birth_weight.csv` file.
+
+-   hint(`read_csv()`, `here()`)
+
+### **Question 6:** Export the Data as `.rds` Format
+
+-   Save the imported data as an `.rds` file
+
+-   hint(`write_rds()`)

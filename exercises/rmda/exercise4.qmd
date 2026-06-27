@@ -1,0 +1,290 @@
+---
+title: "Exercise 4: Data Wrangling"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+## Part 1: Basic Data Exploration
+
+- Questions 1 and 2 are **mandatory for all groups**.
+
+- Question 3 - Group 1
+
+- Question 4 - Group 2
+
+- Question 5 - Group 3
+
+- Question 6 - Group 4
+
+### **Question 1:** Load the Data and Necessary Packages
+
+- Load the low birth weight dataset into R.
+
+  - *Hint:* Use `read_csv()` and `here()` for loading the data.
+  - *Hint:* Use `pacman::p_load()` for loading the required packages.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+
+# Load necessary packages
+pacman::p_load(tidyverse, here)
+
+# Load the dataset
+df <- read_csv(here("data", "low_birth_weight.csv"))
+
+
+```
+
+### **Question 2:** Explore the Dataset with Basic Verbs
+
+Try the following R functions to get a basic understanding of the dataset:
+
+```r
+#| eval: false
+
+df |> 
+  class()     # Check the class of the data frame
+
+df |> 
+  dim()       # Check the dimensions of the dataset (rows and columns)
+
+df |> 
+  nrow()      # Get the number of rows
+
+df |> 
+  ncol()      # Get the number of columns
+
+df |> 
+  glimpse()   # Get a quick overview of the data structure
+
+df |> 
+  view()      # View the dataset in a separate window
+
+df |> 
+  names()     # Get the names of the columns
+```
+
+### **Question 3:** Count the Number of Smokers
+
+- Determine how many smokers are present in the low birth weight dataset.
+
+  - *Hint:* Use function `count()`.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+
+# Count the number of smokers in the dataset
+df |> 
+  count(smoke)
+
+
+```
+
+### **Question 4:** Count the Number of Babies with Low Birth Weight
+
+- Find the number of babies classified as having low birth weight in the dataset.
+
+   - *Hint:* Use function `count()`.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| results: false
+
+
+df |> 
+  count(low)
+
+```
+
+### **Question 5:** Count the Number of Races
+
+- Identify how many distinct races are represented in the low birth weight dataset.
+
+- Find the number of different races in the dataset.
+
+  - *Hint:* Use `distinct()` and `count()`.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| results: false
+
+
+df |> 
+  count(race)
+
+
+```
+
+### **Question 6:** Find the Highest and Lowest Birth Weights
+
+- Determine the highest and lowest birth weights recorded in the dataset.
+
+  - *Hint:* Use `summary()`, `max()`, or `min()` functions.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| results: false
+
+
+max(df$bwt)
+
+min(df$bwt)
+
+summary(df$bwt)
+
+```
+
+
+## Part 2: Advanced Data Wrangling
+
+In Part 2, you will build on the basic data exploration tasks by applying more advanced data wrangling techniques such as filtering, grouping, and summarizing. These exercises will help deepen your understanding of data manipulation in R.
+
+- Questions 7 and 12 are **mandatory for all groups**.
+
+- Question 8 - Group 1
+
+- Question 9 - Group 2
+
+- Question 10 - Group 3
+
+- Question 11 - Group 4
+
+
+### **Question 7:** Filter for Smokers
+
+- Filter the dataset to find only the records of mothers who smoke (`smoke` variable).
+  
+  - *Hint:* Use `filter()` to select rows where `smoke == "Smoker"` (assuming `1` represents smokers).
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+
+df |> 
+  filter(smoke == "Smoker")
+
+```
+
+### **Question 8:** Create a Summary Table of Birth Weights by Race
+
+- Group the data by the `race` variable and calculate the average birth weight (`bwt`) for each race.
+  
+  - *Hint:* Use `group_by()` and `summarize()` to create this summary table.
+  - *Hint:* You can also calculate other summary statistics such as the median or standard deviation of birth weights.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+df |> 
+  group_by(race) |> 
+  summarise(mean = mean(bwt),
+            sd = sd(bwt))
+
+
+```
+
+### **Question 9:** Create a New Variable for Mother's Weight Category
+
+Create a new variable `weight_category` based on the mother's weight (`lwt`) in pounds. You can categorize the weight into three categories:
+
+- "Underweight" (weight < 120 lbs),
+
+- "Normal weight" (120 ≤ weight < 160 lbs),
+
+- "Overweight" (weight ≥ 160 lbs).
+
+  - Hint: Use mutate() along with case_when() to create the new variable.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| results: false
+
+df <- df %>%
+  mutate(weight_category = case_when(
+    lwt < 120 ~ "Underweight",
+    lwt >= 120 & lwt < 160 ~ "Normal weight",
+    lwt >= 160 ~ "Overweight",
+    T ~ NA
+  ))
+
+```
+
+### **Question 10:** Count the Number of Babies by Mother's race and Smoking Status
+
+- Group the dataset by both `race`` and `smoke` (whether the mother smokes or not), and count the number of babies in each group.
+  
+  - *Hint:* Use `group_by()` and `count()` to achieve this.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| results: false
+
+
+df |> 
+  group_by(race, smoke) |> 
+  count()
+
+```
+
+### **Question 11:** Filter Babies Born with Low Birth Weight and Mother's weight.
+
+- Filter the dataset to find babies who were born with a low birth weight (`bwt` < 2500g) and whose mother has a weight is `> 160 lb`.
+  
+  - *Hint:* Use `filter()` to select both conditions.
+  
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| results: false
+
+df |> 
+  filter(low != "Normal", lwt > 160)
+
+
+
+```
+
+### **Question 12:** Calculate the Proportion of Babies with Low Birth Weight for Each Race
+
+- For each race, calculate the proportion of babies with low birth weight (`bwt` < 2500g) relative to the total number of babies in each race.
+  
+  - *Hint:* Use `group_by()` and `mutate()` to calculate the proportion. Use `sum()` to count the number of babies with low birth weight.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+df |>
+  count(race, low) |> 
+  mutate(per = n / sum(n))
+
+
+```

@@ -1,0 +1,155 @@
+---
+title: "Exercise 7: Regression Analysis"
+format: html
+editor_options:
+  chunk_output_type: console
+---
+
+In this exercise, you will apply different types of regression analyses to the low birth weight dataset. The questions are designed to help you decide which regression model is most appropriate based on the variables provided. You will learn to interpret the results and make data-driven conclusions.
+
+---
+
+### Instructions
+
+- Complete all four questions using the `low_birth_weight` dataset.
+- Provide a brief interpretation of your findings for each question.
+- Save your report as a Quarto (.qmd) file.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+pacman::p_load(tidyverse, here)
+
+df <- read_csv(here("data", "low_birth_weight.csv"))
+
+
+
+```
+
+
+---
+
+### **Question 1:** Simple Linear Regression with Continuous Predictor
+
+- Explore the relationship between birth weight (`bwt`) and mother's weight (`lwt`).
+
+- Use `bwt` as the dependent variable and `lwt` as the independent variable.
+
+- Fit a simple linear regression model.
+
+- State the regression equation and interpret the coefficients:
+
+- Comment on the significance of the predictor.
+
+
+```{r}
+#| eval: false
+#| code-fold: true
+
+
+lm_bwt_lwt <- lm(bwt ~ lwt, data = df)
+summary(lm_bwt_lwt)
+
+```
+
+---
+
+### **Question 2:** Simple Linear Regression with Categorical Predictor
+
+- Explore the relationship between birth weight (`bwt`) and smoking status (`smoke`).
+
+- Use `bwt` as the dependent variable and `smoke` as the independent variable.
+
+- Fit a simple linear regression model with `smoke` as a categorical predictor.
+
+- State the regression equation and interpret the coefficients:
+
+- Discuss the significance of the predictor.
+  
+  
+```{r}
+#| eval: false
+#| code-fold: true
+
+
+lm_bwt_smoke <- lm(bwt ~ smoke, data = df)
+summary(lm_bwt_smoke)
+```
+
+---
+
+### **Question 3:** Multiple Linear Regression with Continuous and Categorical Predictors
+
+- Explore the relationship between birth weight (`bwt`), mother’s weight (`lwt`), and smoking status (`smoke`).
+
+- Use `lwt` as the dependent variable, with both `age` (continuous) and `smoke` (categorical) as independent variables.
+
+- Fit a multiple linear regression model.
+
+- State the regression equation and interpret the coefficients:
+
+- Discuss the significance of each predictor.
+
+  
+```{r}
+#| eval: false
+#| code-fold: true
+
+
+lm_bwt_lwt_smoke <- lm(bwt ~ lwt + smoke, data = df)
+summary(lm_bwt_lwt_smoke)
+```
+
+---
+
+### **Question 4:** Logistic Regression with Categorical Outcome
+
+
+
+- Explore the relationship between low birth weight (`low`) and and race (`race`).
+
+- Use `low` (binary outcome) as the dependent variable and `race` (categorical) as independent variables.
+
+- Fit a logistic regression model.
+
+- Report the odds ratios and interpret the coefficients:(take exponential of coefficients `exp(coef(model))`)
+
+- Comment on the significance of each predictor.
+  
+Mandatory: 
+
+```{r}
+#| eval: false
+
+# Recode 'low' variable to binary using dplyr
+df <- df %>%
+  mutate(low = if_else(low == "Normal", 0, 1))
+
+df <- df %>%
+  mutate(
+    race = factor(race, levels = c("White", "Black", "Other")) # Reorder factor levels
+  )
+```
+
+
+```{r}
+#| eval: false
+#| code-fold: true
+
+
+# Fit the logistic regression model using glm
+glm_low_birth_weight <- glm(low ~  race, data = df, family = binomial)
+
+# Display the model summary
+summary(glm_low_birth_weight)
+
+exp(coef(glm_low_birth_weight))
+
+```
+
+
+
+
+

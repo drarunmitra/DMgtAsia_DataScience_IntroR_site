@@ -1,0 +1,75 @@
+---
+title: "Exercise 1: Understanding R Project"
+---
+
+
+The goal of this exercise is to help you set up an R Project in RStudio, familiarize yourself with creating and organizing project files and folders, and install and load essential R packages. By completing this exercise, you will gain a foundational understanding of how to manage your R working environment efficiently and ensure a structured approach to your data analysis projects.
+
+
+### **Question 1:** Ensure R and RStudio are installed  {.unnumbered}
+
+- Make sure both R and RStudio are installed on your computer.
+
+### **Question 2:** Open RStudio {.unnumbered}
+
+- Launch RStudio on your computer.
+
+### **Question 3:** Check Your Working Directory {.unnumbered}
+
+- Run the following command in the R console:
+  
+```r
+getwd()
+```
+
+- Do you recognize this file path? Where does it point to?
+
+### **Question 4:** Create a New R Project {.unnumbered}  
+
+- Create a new R Project on your computer. You can choose a location such as "New Volume (D:)" on your computer.
+
+### **Question 5:** Check Your Project's Working Directory {.unnumbered}
+
+- After creating the R Project, run:
+  
+```r
+getwd()
+```
+
+- Where is your project located now? Is it the folder you just created?
+
+### **Question 6:** Create Project Folders {.unnumbered}
+
+- Inside your project folder, create the following folders:
+
+  - `data`
+  - `codes`
+  - `output`
+
+### **Question 7:** Install Required Packages {.unnumbered}
+
+- Install the following packages if they are not already installed:
+
+```r
+install.packages("pacman")
+install.packages("tidyverse")
+install.packages("here")
+```
+
+### **Question 8:** Save an R Script in the Codes Folder {.unnumbered}
+
+- Open a new R script in RStudio.
+
+- Save the script inside the `codes` folder you just created.
+
+### **Question 9:** Load the Packages in Your Script {.unnumbered}
+
+- In your R script, load the installed packages using:
+
+```r
+library(pacman)
+pacman::p_load(here, tidyverse)
+```
+
+- Did you encounter any errors? If so, troubleshoot and ensure the packages are loaded correctly.
+

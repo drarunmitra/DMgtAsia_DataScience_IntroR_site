@@ -1,0 +1,181 @@
+---
+title: "Exercise 8: Summary Tables with gtsummary"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+
+In this exercise, you will practice using the `gtsummary` package to create summary tables using the low birth weight dataset.
+
+### **Instructions**
+
+You are provided with the low birth weight dataset, which includes variables such as birth weight (`bwt`), mother's weight (`lwt`), mother's age (`age`), smoking status (`smoke`), and race (`race`). Follow the questions below to analyze the dataset using the `gtsummary` package.
+
+### **Question 1:** Load the Data and Packages
+
+- Load the dataset using `read_csv()` and `here()` functions.
+- Load the necessary packages using `pacman::p_load()`.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Load required packages and data
+pacman::p_load(tidyverse, here, gtsummary)
+
+df <- read_csv(here("data", "low_birth_weight.csv"))
+```
+
+
+### **Question 2:** Create a Summary Table for Continuous Variables
+
+- Generate a summary table for the following continuous variables:
+  - Birth weight (`bwt`)
+  - Mother's weight (`lwt`)
+  - Mother's age (`age`)
+  
+- Use the `tbl_summary()` function to display the median and interquartile range (IQR) for each variable.
+
+- Use appropriate labels for each variable
+
+```{r}
+#| echo: false
+
+
+# Question 2: Summary Table for Continuous Variables
+
+df |> 
+  dplyr::select(age, lwt, bwt) |>
+  tbl_summary(
+  type = list(bwt ~ "continuous", lwt ~ "continuous", age ~ "continuous"),
+  statistic = all_continuous() ~ "{median} ({IQR})",
+  label = list(age ~ "Age of Mother", 
+               lwt ~ "Weight of Mother",
+               bwt ~ "Birth Weight of the Child")
+)
+```
+
+#### Answer
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+
+# Question 2: Summary Table for Continuous Variables
+
+df |> 
+  dplyr::select(age, lwt, bwt) |>
+  tbl_summary(
+  type = list(bwt ~ "continuous", lwt ~ "continuous", age ~ "continuous"),
+  statistic = all_continuous() ~ "{median} ({IQR})",
+  label = list(age ~ "Age of Mother", 
+               lwt ~ "Weight of Mother",
+               bwt ~ "Birth Weight of the Child")
+)
+```
+
+### **Question 3:** Create a Summary Table for Categorical Variables
+
+- Generate a summary table for the following categorical variables:
+  - Smoking status (`smoke`)
+  - Race (`race`)
+  - Low birth weight (`low`)
+  
+- Use appropriate labels for each variable and include the counts and percentages.
+
+```{r}
+#| echo: false
+
+df |> 
+  select(smoke, race, low) |> 
+gtsummary::tbl_summary(
+  label = list(smoke ~ "Smoking Status", race ~ "Race", low ~ "Low Birth Weight"),
+)
+```
+
+
+#### Answer
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+
+df |> 
+  select(smoke, race, low) |> 
+gtsummary::tbl_summary(
+  label = list(smoke ~ "Smoking Status", race ~ "Race", low ~ "Low Birth Weight"),
+)
+```
+
+### **Question 4:** Stratified Summary Table by Low Birth Weight Status
+
+- Create a summary table for continuous variables stratified by the low birth weight status (`low`).
+- Display the median and IQR for each continuous variable within each smoking category.
+
+```{r}
+#| echo: false
+
+
+df |> 
+  tbl_summary(
+    by = low,
+  type = list(bwt ~ "continuous", lwt ~ "continuous", age ~ "continuous"),
+  statistic = all_continuous() ~ "{median} ({IQR})",
+  label = list(age ~ "Age of Mother", 
+               lwt ~ "Weight of Mother",
+               bwt ~ "Birth Weight of the, Child",
+               race ~ "Race")
+)
+```
+
+#### Answer
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+
+df |> 
+  tbl_summary(
+    by = low,
+  type = list(bwt ~ "continuous", lwt ~ "continuous", age ~ "continuous"),
+  statistic = all_continuous() ~ "{median} ({IQR})",
+  label = list(age ~ "Age of Mother", 
+               lwt ~ "Weight of Mother",
+               bwt ~ "Birth Weight of the, Child",
+               race ~ "Race")
+)
+```
+
+### **Question 5:** Linear Regression Model
+
+- Fit a linear regression model to predict birth weight (`bwt`) using the mother's weight (`lwt`) and race (`race`).
+- Use the `tbl_regression()` function to display the model summary, including coefficients and p-values.
+
+```{r}
+#| echo: false
+
+# Question 5: Linear Regression Model
+model <- lm(bwt ~ lwt + race, data = df)
+
+model |> 
+tbl_regression()
+```
+
+#### Answer
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+# Question 5: Linear Regression Model
+model <- lm(bwt ~ lwt + race, data = df)
+
+model |> 
+tbl_regression()
+```
+

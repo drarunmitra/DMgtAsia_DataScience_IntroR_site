@@ -1,0 +1,159 @@
+---
+title: "Exercise 6: Hypothesis Testing & Confidence Interval"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+In this exercise, you will apply different statistical inference techniques to analyze the low birth weight dataset. The questions are designed to help you decide which hypothesis test is most appropriate for each scenario. You will learn to interpret the results and make data-driven conclusions.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+
+pacman::p_load(tidyverse, here)
+
+df <- read_csv(here("data", "low_birth_weight.csv"))
+
+
+```
+
+------------------------------------------------------------------------
+
+### Instructions
+
+-   Questions 1 **mandatory for all groups**.
+
+-   Question 2 - Group 1
+
+-   Question 3 - Group 2
+
+-   Question 4 - Group 3
+
+-   Question 5 - Group 4
+
+------------------------------------------------------------------------
+
+### **Question 1:** Testing the Mean Birth Weight
+
+-   Is the average birth weight of babies in the dataset significantly different from 2500 grams?
+
+    -   *Hint:* Use the `bwt` variable for testing the mean of a single sample. (One sample t-test)
+    -   State the null and alternative hypotheses.
+    -   Perform the analysis and interpret the p-value.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+t.test(mu = 2500, x = df$bwt)
+
+
+```
+
+------------------------------------------------------------------------
+
+### **Question 2:** Comparing Birth Weights Based on Smoking Status
+
+-   Is there a significant difference in the mean birth weight of babies born to mothers who smoke compared to those who do not smoke?
+
+    -   *Hint:* Use the `bwt` variable for birth weight and `smoke` variable for smoking status. (two sample t-test)
+    -   Define your null and alternative hypotheses.
+    -   Report the summary statistics and interpret the test results.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+t.test(bwt ~ smoke, data = df)
+
+
+```
+
+------------------------------------------------------------------------
+
+### **Question 3:** Proportion of Low Birth Weight Babies
+
+-   Is the proportion of babies with low birth weight (defined as less than 2500 grams) significantly different from 10% in this dataset?
+
+    -   *Hint:* Use the `low` variable for categorizing low birth weight. (test for proportion)
+    -   State the null and alternative hypotheses.
+    -   Report the proportion and draw a conclusion based on your analysis.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+x <- df |> 
+  filter(low != "Normal") |> 
+  count() |> 
+  pull(n)
+
+n <- df |> 
+  count() |> 
+  pull(n)
+
+prop.test(x, 
+          n, 
+          p = 0.10)
+
+
+```
+
+------------------------------------------------------------------------
+
+### **Question 4:** Analyzing Birth Weight Across Different Races
+
+-   Does the mean birth weight of babies differ across different racial groups in the dataset?
+
+    -   *Hint:* Use the `race` variable for grouping and the `bwt` variable for analysis. (ANOVA)
+    -   Formulate the null and alternative hypotheses.
+    -   Summarize the findings and interpret the p-value.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+aov(bwt ~ race, data = df)
+
+summary(aov(bwt ~ race, data = df))
+
+
+# The p-value (0.00834) is less than the  typical significance level of 0.05.
+# Therefore, we reject the null hypothesis, indicating that there is a statistically  significant difference in the mean birth  weight across the racial groups.
+#The result suggests that at least one racial  group has a different mean birth weight  compared to the others.
+```
+
+------------------------------------------------------------------------
+
+### **Question 5:** Association Between Maternal Smoking and Low Birth Weight
+
+-   Is there an association between maternal smoking status and the likelihood of having a low birth weight baby (birth weight \< 2500 grams)?
+
+    -   *Hint:* Use the `smoke` variable for smoking status and the `low` variable for categorizing low birth weight. (Chi Square test)
+    -   Define your hypotheses.
+    -   Report the test statistic and p-value, and explain your conclusion.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+data <- table(df$low, df$smoke)
+data
+chisq.test(data)
+
+
+# There is a statistically significant relationship between smoking status and birth weight. The data suggests that smoking status is associated with the likelihood of having a low birth weight baby.
+#Further analysis (like calculating odds ratios) could provide insights into the strength and direction of this association.
+```

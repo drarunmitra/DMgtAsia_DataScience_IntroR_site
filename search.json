@@ -1,0 +1,1855 @@
+[
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "Setup & Prerequisites",
+    "section": "",
+    "text": "For the live code on the Foundations page you need nothing but a browser. For the hands-on exercises you need R and RStudio. Allow about 20 minutes.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "setup.html#software",
+    "href": "setup.html#software",
+    "title": "Setup & Prerequisites",
+    "section": "1. Software",
+    "text": "1. Software\n\nR ≥ 4.3: https://cran.rstudio.com/\nRStudio (latest): https://posit.co/downloads/",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "setup.html#r-packages",
+    "href": "setup.html#r-packages",
+    "title": "Setup & Prerequisites",
+    "section": "2. R packages",
+    "text": "2. R packages\nIn RStudio, run once:\ninstall.packages(c(\"tidyverse\", \"here\", \"janitor\", \"skimr\", \"pacman\", \"MASS\"))\ntidyverse gives you dplyr, ggplot2, readr and friends. here builds reliable file paths. janitor::clean_names() tidies column names. skimr::skim() summarises a dataset. MASS supplies the birthwt dataset used in the exercises.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "setup.html#project",
+    "href": "setup.html#project",
+    "title": "Setup & Prerequisites",
+    "section": "3. Project",
+    "text": "3. Project\nOpen DMgtAsia_DataScience_IntroR.Rproj in RStudio. Working with an RStudio Project means here() paths resolve from the project root, so your code runs the same on any machine.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "setup.html#pre-flight-check",
+    "href": "setup.html#pre-flight-check",
+    "title": "Setup & Prerequisites",
+    "section": "4. Pre-flight check",
+    "text": "4. Pre-flight check\nlibrary(tidyverse)\nlibrary(here)\ncat(\"R\", as.character(getRversion()), \"ready\\n\")\nIf that runs without error, you are ready. Open Session-I.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html",
+    "href": "session3-working-with-data.html",
+    "title": "Working with Data in R",
+    "section": "",
+    "text": "EDA is the critical first step.\nEDA is a state of mind.\nEDA is exploring your ideas.\nEDA has no strict rules.\nEDA helps understand your data.\nEDA is an iterative cycle.\nEDA is a creative process.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#what-is-exploratory-data-analysis",
+    "href": "session3-working-with-data.html#what-is-exploratory-data-analysis",
+    "title": "Working with Data in R",
+    "section": "",
+    "text": "EDA is the critical first step.\nEDA is a state of mind.\nEDA is exploring your ideas.\nEDA has no strict rules.\nEDA helps understand your data.\nEDA is an iterative cycle.\nEDA is a creative process.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#definition-of-eda",
+    "href": "session3-working-with-data.html#definition-of-eda",
+    "title": "Working with Data in R",
+    "section": "Definition of EDA",
+    "text": "Definition of EDA\n\n“detective work – numerical detective work – or counting detective work – or graphical detective work”\n\n\nTukey, 1977 Page 1, Exploratory Data Analysis",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#how-to-do-eda",
+    "href": "session3-working-with-data.html#how-to-do-eda",
+    "title": "Working with Data in R",
+    "section": "How to do EDA?",
+    "text": "How to do EDA?\n\nThe easiest way to do EDA is to use questions as tools to guide your investigation.\nEDA is an important part of any data analysis, even if the questions are known already.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#asking-the-right-questions",
+    "href": "session3-working-with-data.html#asking-the-right-questions",
+    "title": "Working with Data in R",
+    "section": "Asking the right questions",
+    "text": "Asking the right questions\nKey to asking quality questions is to generate a large quantity of questions.\nIt is difficult to ask revealing questions at the start of the analysis.\nBut, each new question will expose a new aspect and increase your chance of making a discovery.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#what-questions-to-ask",
+    "href": "session3-working-with-data.html#what-questions-to-ask",
+    "title": "Working with Data in R",
+    "section": "What Questions to ask?",
+    "text": "What Questions to ask?\n\nWhat type of variation occurs within your variables?\nWhat type of covariation occurs between your variables?\nWhether your data meets your expectations or not.\nWhether the quality of your data is robust or not.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#steps-of-a-data-analysis-project",
+    "href": "session3-working-with-data.html#steps-of-a-data-analysis-project",
+    "title": "Working with Data in R",
+    "section": "Steps of a data analysis project",
+    "text": "Steps of a data analysis project\n\n\n\nPreparing Tidy Data\n\nData Cleaning\nData Wrangling\n\nData Exploration\n\nTransformation\nVisualization\n\nStatistical Analysis\nPrepare Results\nDraw Inferences\nReport Findings",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#data-wrangling-in-r",
+    "href": "session3-working-with-data.html#data-wrangling-in-r",
+    "title": "Working with Data in R",
+    "section": "Data Wrangling in R",
+    "text": "Data Wrangling in R\n\ndplyr Package\n\n\nThe dplyr is a powerful R-package to manipulate, clean and summarize unstructured data.\nIn short, it makes data exploration and data manipulation easy and fast in R.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#verbs-of-the-dplyr",
+    "href": "session3-working-with-data.html#verbs-of-the-dplyr",
+    "title": "Working with Data in R",
+    "section": "Verbs of the dplyr",
+    "text": "Verbs of the dplyr\n\nThere are many verbs in dplyr that are useful.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#using-the-pipe-operator-or",
+    "href": "session3-working-with-data.html#using-the-pipe-operator-or",
+    "title": "Working with Data in R",
+    "section": "Using the pipe operator (|> or %>%)",
+    "text": "Using the pipe operator (|&gt; or %&gt;%)",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#let-us-load-some-data",
+    "href": "session3-working-with-data.html#let-us-load-some-data",
+    "title": "Working with Data in R",
+    "section": "Let us load some data",
+    "text": "Let us load some data\nThe cells on this page run live in your browser. This first one loads the WHO TB data and runs on its own (the first run takes a few seconds while dplyr loads).",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#take-a-quick-look-at-the-data",
+    "href": "session3-working-with-data.html#take-a-quick-look-at-the-data",
+    "title": "Working with Data in R",
+    "section": "Take a Quick Look at the data",
+    "text": "Take a Quick Look at the data\nglimpse() shows every column down the page. Press Run.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#check-the-first-few-rows",
+    "href": "session3-working-with-data.html#check-the-first-few-rows",
+    "title": "Working with Data in R",
+    "section": "Check the first few rows",
+    "text": "Check the first few rows",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#check-the-dimensions-and-the-column-names",
+    "href": "session3-working-with-data.html#check-the-dimensions-and-the-column-names",
+    "title": "Working with Data in R",
+    "section": "Check the dimensions and the column names",
+    "text": "Check the dimensions and the column names",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#unique-countries-in-the-bottom-50-rows",
+    "href": "session3-working-with-data.html#unique-countries-in-the-bottom-50-rows",
+    "title": "Working with Data in R",
+    "section": "Unique countries in the bottom 50 rows",
+    "text": "Unique countries in the bottom 50 rows\nWith the pipe, the steps read left to right: take tb, keep the last 50 rows, list the distinct countries.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#distinct-and-count",
+    "href": "session3-working-with-data.html#distinct-and-count",
+    "title": "Working with Data in R",
+    "section": "distinct() and count()",
+    "text": "distinct() and count()\ndistinct() returns the distinct values of a column. count() returns each distinct value and how many times it appears. Try both.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#arrange",
+    "href": "session3-working-with-data.html#arrange",
+    "title": "Working with Data in R",
+    "section": "arrange()",
+    "text": "arrange()\narrange() sorts by a column. Use desc() (or a leading -) to sort descending. Edit and re-run.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#logical-operators-in-r",
+    "href": "session3-working-with-data.html#logical-operators-in-r",
+    "title": "Working with Data in R",
+    "section": "Logical Operators in R",
+    "text": "Logical Operators in R\n\n\n\nTo satisfy all of several conditions, use the “and” operator, &.\nThe “or” operator | returns rows that meet any of the conditions.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#filter-rows-from-2015-on",
+    "href": "session3-working-with-data.html#filter-rows-from-2015-on",
+    "title": "Working with Data in R",
+    "section": "filter(): rows from 2015 on",
+    "text": "filter(): rows from 2015 on",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#filter-all-entries-for-india",
+    "href": "session3-working-with-data.html#filter-all-entries-for-india",
+    "title": "Working with Data in R",
+    "section": "filter(): all entries for India",
+    "text": "filter(): all entries for India",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#filter-by-year-and-country",
+    "href": "session3-working-with-data.html#filter-by-year-and-country",
+    "title": "Working with Data in R",
+    "section": "Filter by year and country",
+    "text": "Filter by year and country",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#the-in-operator",
+    "href": "session3-working-with-data.html#the-in-operator",
+    "title": "Working with Data in R",
+    "section": "The %in% operator",
+    "text": "The %in% operator\nTo filter a categorical variable for several levels at once, use %in%. indian_subcont was defined in the first cell.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#summarize",
+    "href": "session3-working-with-data.html#summarize",
+    "title": "Working with Data in R",
+    "section": "summarize()",
+    "text": "summarize()\nsummarize() collapses many values to one. n() counts rows; n_distinct() counts distinct values.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#group_by-and-summarize",
+    "href": "session3-working-with-data.html#group_by-and-summarize",
+    "title": "Working with Data in R",
+    "section": "group_by() and summarize()",
+    "text": "group_by() and summarize()\nThe power of summarize() shows when you group first. Summaries are then computed per group.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#mutate-and-if_else",
+    "href": "session3-working-with-data.html#mutate-and-if_else",
+    "title": "Working with Data in R",
+    "section": "mutate() and if_else()",
+    "text": "mutate() and if_else()\nmutate() creates or changes a column. Here we flag the Indian subcontinent.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#group-by-the-new-variable",
+    "href": "session3-working-with-data.html#group-by-the-new-variable",
+    "title": "Working with Data in R",
+    "section": "Group by the new variable",
+    "text": "Group by the new variable",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#case_when",
+    "href": "session3-working-with-data.html#case_when",
+    "title": "Working with Data in R",
+    "section": "case_when()",
+    "text": "case_when()\nAlternative to if_else() for more than two options.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#if_else-vs-case_when",
+    "href": "session3-working-with-data.html#if_else-vs-case_when",
+    "title": "Working with Data in R",
+    "section": "if_else() vs case_when()",
+    "text": "if_else() vs case_when()\nUse if_else() for two options. For more options, nested if_else() becomes hard to read, so case_when() is clearer.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#join",
+    "href": "session3-working-with-data.html#join",
+    "title": "Working with Data in R",
+    "section": "join()",
+    "text": "join()\n\nReal projects combine several sources of data.\nThe mutating joins combine data frames by matching rows on a key.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#more-on-join",
+    "href": "session3-working-with-data.html#more-on-join",
+    "title": "Working with Data in R",
+    "section": "More on join()",
+    "text": "More on join()\n\nleft_join(x, y) keeps all rows of x, adding matching columns from y.\nright_join(x, y) keeps all rows of y.\nfull_join(x, y) keeps all rows from both.\ninner_join(x, y) keeps only rows present in both.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#visual-representation-of-the-left_join",
+    "href": "session3-working-with-data.html#visual-representation-of-the-left_join",
+    "title": "Working with Data in R",
+    "section": "Visual representation of the left_join()",
+    "text": "Visual representation of the left_join()",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#pivot",
+    "href": "session3-working-with-data.html#pivot",
+    "title": "Working with Data in R",
+    "section": "pivot()",
+    "text": "pivot()\nWe often reshape data between long and wide format with the pivot family of functions.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#other-useful-functions",
+    "href": "session3-working-with-data.html#other-useful-functions",
+    "title": "Working with Data in R",
+    "section": "Other Useful Functions",
+    "text": "Other Useful Functions\n\ndrop_na() removes rows with missing values in a chosen column.\nselect() returns only the columns you name (the column counterpart of filter()).",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "session3-working-with-data.html#more-resources-for-dplyr",
+    "href": "session3-working-with-data.html#more-resources-for-dplyr",
+    "title": "Working with Data in R",
+    "section": "More Resources for dplyr",
+    "text": "More Resources for dplyr\n\nThe Data Transformation cheatsheet summarises the dplyr verbs on a single page.\nThe RStudio IDE cheatsheet is a handy reference for the editor itself.\nReview the Tibbles and Transformations chapters of the free R for Data Science book.",
+    "crumbs": [
+      "Home",
+      "Session-III · Working with Data",
+      "Working with Data in R"
+    ]
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#what-is-exploratory-data-analysis",
+    "href": "slides-session3-working-with-data.html#what-is-exploratory-data-analysis",
+    "title": "Working with Data in R",
+    "section": "What is Exploratory Data Analysis?",
+    "text": "What is Exploratory Data Analysis?\n\n\n\nEDA is the critical first step.\nEDA is a state of mind.\nEDA is exploring your ideas.\nEDA has no strict rules.\nEDA helps understand your data.\nEDA is an iterative cycle.\nEDA is a creative process."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#definition-of-eda",
+    "href": "slides-session3-working-with-data.html#definition-of-eda",
+    "title": "Working with Data in R",
+    "section": "Definition of EDA",
+    "text": "Definition of EDA\n\n“detective work – numerical detective work – or counting detective work – or graphical detective work”\n\n\nTukey, 1977 Page 1, Exploratory Data Analysis"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#how-to-do-eda",
+    "href": "slides-session3-working-with-data.html#how-to-do-eda",
+    "title": "Working with Data in R",
+    "section": "How to do EDA?",
+    "text": "How to do EDA?\n\nThe easiest way to do EDA is to use questions as tools to guide your investigation.\nEDA is an important part of any data analysis, even if the questions are known already."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#asking-the-right-questions",
+    "href": "slides-session3-working-with-data.html#asking-the-right-questions",
+    "title": "Working with Data in R",
+    "section": "Asking the right questions",
+    "text": "Asking the right questions\nKey to asking quality questions is to generate a large quantity of questions.\nIt is difficult to ask revealing questions at the start of the analysis.\nBut, each new question will expose a new aspect and increase your chance of making a discovery."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#what-questions-to-ask",
+    "href": "slides-session3-working-with-data.html#what-questions-to-ask",
+    "title": "Working with Data in R",
+    "section": "What Questions to ask?",
+    "text": "What Questions to ask?\n\nWhat type of variation occurs within your variables?\nWhat type of covariation occurs between your variables?\nWhether your data meets your expectations or not.\nWhether the quality of your data is robust or not."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#steps-of-a-data-analysis-project",
+    "href": "slides-session3-working-with-data.html#steps-of-a-data-analysis-project",
+    "title": "Working with Data in R",
+    "section": "Steps of a data analysis project",
+    "text": "Steps of a data analysis project\n\n\n\nPreparing Tidy Data\n\nData Cleaning\nData Wrangling\n\nData Exploration\n\nTransformation\nVisualization\n\nStatistical Analysis\nPrepare Results\nDraw Inferences\nReport Findings"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#data-wrangling-in-r",
+    "href": "slides-session3-working-with-data.html#data-wrangling-in-r",
+    "title": "Working with Data in R",
+    "section": "Data Wrangling in R",
+    "text": "Data Wrangling in R\ndplyr Package\n\n\nThe dplyr is a powerful R-package to manipulate, clean and summarize unstructured data.\nIn short, it makes data exploration and data manipulation easy and fast in R."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#verbs-of-the-dplyr",
+    "href": "slides-session3-working-with-data.html#verbs-of-the-dplyr",
+    "title": "Working with Data in R",
+    "section": "Verbs of the dplyr",
+    "text": "Verbs of the dplyr\n\nThere are many verbs in dplyr that are useful."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#using-the-pipe-operator-or",
+    "href": "slides-session3-working-with-data.html#using-the-pipe-operator-or",
+    "title": "Working with Data in R",
+    "section": "Using the pipe operator (|> or %>%)",
+    "text": "Using the pipe operator (|&gt; or %&gt;%)"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#let-us-load-some-data",
+    "href": "slides-session3-working-with-data.html#let-us-load-some-data",
+    "title": "Working with Data in R",
+    "section": "Let us load some data",
+    "text": "Let us load some data\nThe cells on this page run live in your browser. This first one loads the WHO TB data and runs on its own (the first run takes a few seconds while dplyr loads)."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#take-a-quick-look-at-the-data",
+    "href": "slides-session3-working-with-data.html#take-a-quick-look-at-the-data",
+    "title": "Working with Data in R",
+    "section": "Take a Quick Look at the data",
+    "text": "Take a Quick Look at the data\nglimpse() shows every column down the page. Press Run."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#check-the-first-few-rows",
+    "href": "slides-session3-working-with-data.html#check-the-first-few-rows",
+    "title": "Working with Data in R",
+    "section": "Check the first few rows",
+    "text": "Check the first few rows"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#check-the-dimensions-and-the-column-names",
+    "href": "slides-session3-working-with-data.html#check-the-dimensions-and-the-column-names",
+    "title": "Working with Data in R",
+    "section": "Check the dimensions and the column names",
+    "text": "Check the dimensions and the column names"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#unique-countries-in-the-bottom-50-rows",
+    "href": "slides-session3-working-with-data.html#unique-countries-in-the-bottom-50-rows",
+    "title": "Working with Data in R",
+    "section": "Unique countries in the bottom 50 rows",
+    "text": "Unique countries in the bottom 50 rows\nWith the pipe, the steps read left to right: take tb, keep the last 50 rows, list the distinct countries."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#distinct-and-count",
+    "href": "slides-session3-working-with-data.html#distinct-and-count",
+    "title": "Working with Data in R",
+    "section": "distinct() and count()",
+    "text": "distinct() and count()\ndistinct() returns the distinct values of a column. count() returns each distinct value and how many times it appears. Try both."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#arrange",
+    "href": "slides-session3-working-with-data.html#arrange",
+    "title": "Working with Data in R",
+    "section": "arrange()",
+    "text": "arrange()\narrange() sorts by a column. Use desc() (or a leading -) to sort descending. Edit and re-run."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#logical-operators-in-r",
+    "href": "slides-session3-working-with-data.html#logical-operators-in-r",
+    "title": "Working with Data in R",
+    "section": "Logical Operators in R",
+    "text": "Logical Operators in R\n\n\n\nTo satisfy all of several conditions, use the “and” operator, &.\nThe “or” operator | returns rows that meet any of the conditions."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#filter-rows-from-2015-on",
+    "href": "slides-session3-working-with-data.html#filter-rows-from-2015-on",
+    "title": "Working with Data in R",
+    "section": "filter(): rows from 2015 on",
+    "text": "filter(): rows from 2015 on"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#filter-all-entries-for-india",
+    "href": "slides-session3-working-with-data.html#filter-all-entries-for-india",
+    "title": "Working with Data in R",
+    "section": "filter(): all entries for India",
+    "text": "filter(): all entries for India"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#filter-by-year-and-country",
+    "href": "slides-session3-working-with-data.html#filter-by-year-and-country",
+    "title": "Working with Data in R",
+    "section": "Filter by year and country",
+    "text": "Filter by year and country"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#the-in-operator",
+    "href": "slides-session3-working-with-data.html#the-in-operator",
+    "title": "Working with Data in R",
+    "section": "The %in% operator",
+    "text": "The %in% operator\nTo filter a categorical variable for several levels at once, use %in%. indian_subcont was defined in the first cell."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#summarize",
+    "href": "slides-session3-working-with-data.html#summarize",
+    "title": "Working with Data in R",
+    "section": "summarize()",
+    "text": "summarize()\nsummarize() collapses many values to one. n() counts rows; n_distinct() counts distinct values."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#group_by-and-summarize",
+    "href": "slides-session3-working-with-data.html#group_by-and-summarize",
+    "title": "Working with Data in R",
+    "section": "group_by() and summarize()",
+    "text": "group_by() and summarize()\nThe power of summarize() shows when you group first. Summaries are then computed per group."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#mutate-and-if_else",
+    "href": "slides-session3-working-with-data.html#mutate-and-if_else",
+    "title": "Working with Data in R",
+    "section": "mutate() and if_else()",
+    "text": "mutate() and if_else()\nmutate() creates or changes a column. Here we flag the Indian subcontinent."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#group-by-the-new-variable",
+    "href": "slides-session3-working-with-data.html#group-by-the-new-variable",
+    "title": "Working with Data in R",
+    "section": "Group by the new variable",
+    "text": "Group by the new variable"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#case_when",
+    "href": "slides-session3-working-with-data.html#case_when",
+    "title": "Working with Data in R",
+    "section": "case_when()",
+    "text": "case_when()\nAlternative to if_else() for more than two options."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#if_else-vs-case_when",
+    "href": "slides-session3-working-with-data.html#if_else-vs-case_when",
+    "title": "Working with Data in R",
+    "section": "if_else() vs case_when()",
+    "text": "if_else() vs case_when()\nUse if_else() for two options. For more options, nested if_else() becomes hard to read, so case_when() is clearer."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#join",
+    "href": "slides-session3-working-with-data.html#join",
+    "title": "Working with Data in R",
+    "section": "join()",
+    "text": "join()\n\nReal projects combine several sources of data.\nThe mutating joins combine data frames by matching rows on a key."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#more-on-join",
+    "href": "slides-session3-working-with-data.html#more-on-join",
+    "title": "Working with Data in R",
+    "section": "More on join()",
+    "text": "More on join()\n\nleft_join(x, y) keeps all rows of x, adding matching columns from y.\nright_join(x, y) keeps all rows of y.\nfull_join(x, y) keeps all rows from both.\ninner_join(x, y) keeps only rows present in both."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#visual-representation-of-the-left_join",
+    "href": "slides-session3-working-with-data.html#visual-representation-of-the-left_join",
+    "title": "Working with Data in R",
+    "section": "Visual representation of the left_join()",
+    "text": "Visual representation of the left_join()"
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#pivot",
+    "href": "slides-session3-working-with-data.html#pivot",
+    "title": "Working with Data in R",
+    "section": "pivot()",
+    "text": "pivot()\nWe often reshape data between long and wide format with the pivot family of functions."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#other-useful-functions",
+    "href": "slides-session3-working-with-data.html#other-useful-functions",
+    "title": "Working with Data in R",
+    "section": "Other Useful Functions",
+    "text": "Other Useful Functions\n\ndrop_na() removes rows with missing values in a chosen column.\nselect() returns only the columns you name (the column counterpart of filter())."
+  },
+  {
+    "objectID": "slides-session3-working-with-data.html#more-resources-for-dplyr",
+    "href": "slides-session3-working-with-data.html#more-resources-for-dplyr",
+    "title": "Working with Data in R",
+    "section": "More Resources for dplyr",
+    "text": "More Resources for dplyr\n\nThe Data Transformation cheatsheet summarises the dplyr verbs on a single page.\nThe RStudio IDE cheatsheet is a handy reference for the editor itself.\nReview the Tibbles and Transformations chapters of the free R for Data Science book."
+  },
+  {
+    "objectID": "session1-foundations.html",
+    "href": "session1-foundations.html",
+    "title": "Foundations of R & RStudio",
+    "section": "",
+    "text": "Public health runs on data: surveys, surveillance, registers, trials.\nData science is the workflow that turns that data into decisions: import, tidy, transform, visualise, model, communicate.\nWe do it in a way others can check and repeat.\n\n\n\nThe live R cells on this page run in your browser. Nothing to install.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#data-science-for-public-health",
+    "href": "session1-foundations.html#data-science-for-public-health",
+    "title": "Foundations of R & RStudio",
+    "section": "",
+    "text": "Public health runs on data: surveys, surveillance, registers, trials.\nData science is the workflow that turns that data into decisions: import, tidy, transform, visualise, model, communicate.\nWe do it in a way others can check and repeat.\n\n\n\nThe live R cells on this page run in your browser. Nothing to install.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#why-r-and-rstudio",
+    "href": "session1-foundations.html#why-r-and-rstudio",
+    "title": "Foundations of R & RStudio",
+    "section": "Why R and RStudio",
+    "text": "Why R and RStudio\n\nR is a language built by and for statisticians and epidemiologists.\nIt is free, open, and has a package for almost every method in public health.\nRStudio is the workbench that makes R comfortable to use.\nEverything is scripted, so an analysis is a document you can re-run, not a set of clicks.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#the-rstudio-tour",
+    "href": "session1-foundations.html#the-rstudio-tour",
+    "title": "Foundations of R & RStudio",
+    "section": "The RStudio tour",
+    "text": "The RStudio tour\n\nSource (top left): your scripts and Quarto documents.\nConsole (bottom left): R runs here.\nEnvironment (top right): the objects you have created.\nFiles / Plots / Help (bottom right): outputs and documentation.\nProjects keep one analysis self-contained; with here(), file paths just work.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#objects-and-assignment-live",
+    "href": "session1-foundations.html#objects-and-assignment-live",
+    "title": "Foundations of R & RStudio",
+    "section": "Objects and assignment (live)",
+    "text": "Objects and assignment (live)\nPress Run. &lt;- stores a value in a named object.\nThe keyboard shortcut for &lt;- is Alt/Option and minus.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#quiz-assignment",
+    "href": "session1-foundations.html#quiz-assignment",
+    "title": "Foundations of R & RStudio",
+    "section": "Quiz: assignment",
+    "text": "Quiz: assignment\n\nviewof q1 = Inputs.radio(\n  [\"= =\", \"&lt;-\", \"==\", \"-&gt;&gt;\"],\n  { label: \"Which operator assigns a value to an object in R?\" }\n);\nhtml`${q1 == null ? \"\" : q1 === \"&lt;-\" ? \"&lt;strong&gt;Correct.&lt;/strong&gt; R assigns with &lt;code&gt;&lt;-&lt;/code&gt; (Alt/Option and minus).\" : \"&lt;em&gt;Not quite.&lt;/em&gt; R's assignment arrow points left.\"}`",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#vectors-live",
+    "href": "session1-foundations.html#vectors-live",
+    "title": "Foundations of R & RStudio",
+    "section": "Vectors (live)",
+    "text": "Vectors (live)\nA vector holds several values of the same type. c() combines them.\nTry changing a number and running again.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#data-types",
+    "href": "session1-foundations.html#data-types",
+    "title": "Foundations of R & RStudio",
+    "section": "Data types",
+    "text": "Data types\n\nnumeric 3.4, counts and measurements.\ncharacter \"female\", text in quotes.\nlogical TRUE / FALSE.\nfactor a category with fixed levels (for example sex, district).",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#functions",
+    "href": "session1-foundations.html#functions",
+    "title": "Foundations of R & RStudio",
+    "section": "Functions",
+    "text": "Functions\n\nA function takes inputs and returns an output: mean(weights).\nYou name the function, then pass arguments in brackets.\nsummary() describes a whole vector at once.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#packages",
+    "href": "session1-foundations.html#packages",
+    "title": "Foundations of R & RStudio",
+    "section": "Packages",
+    "text": "Packages\n\nA package is a bundle of functions. Install once, load each session.\ninstall.packages(\"tidyverse\") downloads it (done on your machine).\nlibrary(tidyverse) loads it for use.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#quiz-install-vs-load",
+    "href": "session1-foundations.html#quiz-install-vs-load",
+    "title": "Foundations of R & RStudio",
+    "section": "Quiz: install vs load",
+    "text": "Quiz: install vs load\n\nviewof q2 = Inputs.radio(\n  [\"Installs a package from the internet\", \"Loads an installed package for use\", \"Deletes a package\", \"Updates R\"],\n  { label: \"What does library(tidyverse) do?\" }\n);\nhtml`${q2 == null ? \"\" : q2 === \"Loads an installed package for use\" ? \"&lt;strong&gt;Correct.&lt;/strong&gt; install.packages() downloads once; library() loads it each session.\" : \"&lt;em&gt;Try again.&lt;/em&gt; Downloading the package is a separate step.\"}`",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "session1-foundations.html#recap",
+    "href": "session1-foundations.html#recap",
+    "title": "Foundations of R & RStudio",
+    "section": "Recap",
+    "text": "Recap\n\nData science is a workflow: import, tidy, transform, visualise, communicate, reproducibly.\nR is the language, RStudio is the workbench, Projects plus here() keep paths sane.\nObjects (&lt;-), vectors (c()), data types, and functions are the building blocks.\nPackages add capability: install once, library() each session.\nNext: best practices, then working with real data.",
+    "crumbs": [
+      "Home",
+      "Session-I · Foundations",
+      "Foundations of R & RStudio"
+    ]
+  },
+  {
+    "objectID": "slides-session1-foundations.html#data-science-for-public-health",
+    "href": "slides-session1-foundations.html#data-science-for-public-health",
+    "title": "Foundations of R & RStudio",
+    "section": "Data science for public health",
+    "text": "Data science for public health\n\nPublic health runs on data: surveys, surveillance, registers, trials.\nData science is the workflow that turns that data into decisions: import, tidy, transform, visualise, model, communicate.\nWe do it in a way others can check and repeat.\n\n\n\nThe live R cells on this page run in your browser. Nothing to install."
+  },
+  {
+    "objectID": "slides-session1-foundations.html#why-r-and-rstudio",
+    "href": "slides-session1-foundations.html#why-r-and-rstudio",
+    "title": "Foundations of R & RStudio",
+    "section": "Why R and RStudio",
+    "text": "Why R and RStudio\n\nR is a language built by and for statisticians and epidemiologists.\nIt is free, open, and has a package for almost every method in public health.\nRStudio is the workbench that makes R comfortable to use.\nEverything is scripted, so an analysis is a document you can re-run, not a set of clicks."
+  },
+  {
+    "objectID": "slides-session1-foundations.html#the-rstudio-tour",
+    "href": "slides-session1-foundations.html#the-rstudio-tour",
+    "title": "Foundations of R & RStudio",
+    "section": "The RStudio tour",
+    "text": "The RStudio tour\n\nSource (top left): your scripts and Quarto documents.\nConsole (bottom left): R runs here.\nEnvironment (top right): the objects you have created.\nFiles / Plots / Help (bottom right): outputs and documentation.\nProjects keep one analysis self-contained; with here(), file paths just work."
+  },
+  {
+    "objectID": "slides-session1-foundations.html#objects-and-assignment-live",
+    "href": "slides-session1-foundations.html#objects-and-assignment-live",
+    "title": "Foundations of R & RStudio",
+    "section": "Objects and assignment (live)",
+    "text": "Objects and assignment (live)\nPress Run. &lt;- stores a value in a named object.\nThe keyboard shortcut for &lt;- is Alt/Option and minus."
+  },
+  {
+    "objectID": "slides-session1-foundations.html#quiz-assignment",
+    "href": "slides-session1-foundations.html#quiz-assignment",
+    "title": "Foundations of R & RStudio",
+    "section": "Quiz: assignment",
+    "text": "Quiz: assignment\n\nviewof q1 = Inputs.radio(\n  [\"= =\", \"&lt;-\", \"==\", \"-&gt;&gt;\"],\n  { label: \"Which operator assigns a value to an object in R?\" }\n);\nhtml`${q1 == null ? \"\" : q1 === \"&lt;-\" ? \"&lt;strong&gt;Correct.&lt;/strong&gt; R assigns with &lt;code&gt;&lt;-&lt;/code&gt; (Alt/Option and minus).\" : \"&lt;em&gt;Not quite.&lt;/em&gt; R's assignment arrow points left.\"}`"
+  },
+  {
+    "objectID": "slides-session1-foundations.html#vectors-live",
+    "href": "slides-session1-foundations.html#vectors-live",
+    "title": "Foundations of R & RStudio",
+    "section": "Vectors (live)",
+    "text": "Vectors (live)\nA vector holds several values of the same type. c() combines them.\nTry changing a number and running again."
+  },
+  {
+    "objectID": "slides-session1-foundations.html#data-types",
+    "href": "slides-session1-foundations.html#data-types",
+    "title": "Foundations of R & RStudio",
+    "section": "Data types",
+    "text": "Data types\n\nnumeric 3.4, counts and measurements.\ncharacter \"female\", text in quotes.\nlogical TRUE / FALSE.\nfactor a category with fixed levels (for example sex, district)."
+  },
+  {
+    "objectID": "slides-session1-foundations.html#functions",
+    "href": "slides-session1-foundations.html#functions",
+    "title": "Foundations of R & RStudio",
+    "section": "Functions",
+    "text": "Functions\n\nA function takes inputs and returns an output: mean(weights).\nYou name the function, then pass arguments in brackets.\nsummary() describes a whole vector at once."
+  },
+  {
+    "objectID": "slides-session1-foundations.html#packages",
+    "href": "slides-session1-foundations.html#packages",
+    "title": "Foundations of R & RStudio",
+    "section": "Packages",
+    "text": "Packages\n\nA package is a bundle of functions. Install once, load each session.\ninstall.packages(\"tidyverse\") downloads it (done on your machine).\nlibrary(tidyverse) loads it for use."
+  },
+  {
+    "objectID": "slides-session1-foundations.html#quiz-install-vs-load",
+    "href": "slides-session1-foundations.html#quiz-install-vs-load",
+    "title": "Foundations of R & RStudio",
+    "section": "Quiz: install vs load",
+    "text": "Quiz: install vs load\n\nviewof q2 = Inputs.radio(\n  [\"Installs a package from the internet\", \"Loads an installed package for use\", \"Deletes a package\", \"Updates R\"],\n  { label: \"What does library(tidyverse) do?\" }\n);\nhtml`${q2 == null ? \"\" : q2 === \"Loads an installed package for use\" ? \"&lt;strong&gt;Correct.&lt;/strong&gt; install.packages() downloads once; library() loads it each session.\" : \"&lt;em&gt;Try again.&lt;/em&gt; Downloading the package is a separate step.\"}`"
+  },
+  {
+    "objectID": "slides-session1-foundations.html#recap",
+    "href": "slides-session1-foundations.html#recap",
+    "title": "Foundations of R & RStudio",
+    "section": "Recap",
+    "text": "Recap\n\nData science is a workflow: import, tidy, transform, visualise, communicate, reproducibly.\nR is the language, RStudio is the workbench, Projects plus here() keep paths sane.\nObjects (&lt;-), vectors (c()), data types, and functions are the building blocks.\nPackages add capability: install once, library() each session.\nNext: best practices, then working with real data."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Introduction to R and RStudio is the data science foundations module of the DMgtAsia course, and the precursor to the Spatial Epidemiology module. It draws on data science trainings delivered across India and is packaged here as a self-paced or workshop module with live code and hands-on exercises.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#the-module",
+    "href": "about.html#the-module",
+    "title": "About",
+    "section": "",
+    "text": "Introduction to R and RStudio is the data science foundations module of the DMgtAsia course, and the precursor to the Spatial Epidemiology module. It draws on data science trainings delivered across India and is packaged here as a self-paced or workshop module with live code and hands-on exercises.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#author",
+    "href": "about.html#author",
+    "title": "About",
+    "section": "Author",
+    "text": "Author\n\nDr. Arun Mitra, Assistant Professor, Department of Community & Family Medicine, All India Institute of Medical Sciences (AIIMS), Bibinagar, Hyderabad, Telangana",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#source-licence",
+    "href": "about.html#source-licence",
+    "title": "About",
+    "section": "Source & licence",
+    "text": "Source & licence\nSource repository: https://github.com/drarunmitra/DMgtAsia_DataScience_IntroR\nTeaching materials are released under CC-BY-SA; code under MIT, unless noted otherwise.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#acknowledgements",
+    "href": "about.html#acknowledgements",
+    "title": "About",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nBuilt on R, the tidyverse, quarto-live (webR), and Quarto.",
+    "crumbs": [
+      "Home",
+      "Reference",
+      "About"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Introduction to R and RStudio",
+    "section": "Welcome",
+    "text": "Welcome\nThis is the data science foundations module of the DMgtAsia course, and the precursor to the Spatial Epidemiology module. It introduces R and RStudio for public health work, from first principles to a reproducible analysis.\nNo prior R experience is assumed. The first thing you run will work.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#what-you-will-be-able-to-do",
+    "href": "index.html#what-you-will-be-able-to-do",
+    "title": "Introduction to R and RStudio",
+    "section": "What you will be able to do",
+    "text": "What you will be able to do\n\nExplain why R and a reproducible workflow suit public health.\nFind your way around RStudio: panes, Projects, and here().\nUse R basics: objects, vectors, data types, functions, and packages.\nRead a dataset, inspect it, and wrangle it with the tidyverse.\nFollow good data science practice: reproducibility, project structure, and coding style.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#sessions",
+    "href": "index.html#sessions",
+    "title": "Introduction to R and RStudio",
+    "section": "Sessions",
+    "text": "Sessions\n\n\n\n\n\n\n\n\nSession\nTheme\nFocus\n\n\n\n\nSession-I\nFoundations\nR, RStudio, the data science workflow, R basics\n\n\nSession-II\nBest Practices in Data Science\nreproducibility, tool choice, literate programming, structure, style\n\n\nSession-III\nWorking with Data\nexploratory data analysis and the dplyr verbs\n\n\nSession-IV\nExercises\nhands-on practice on a real dataset\n\n\n\nStart with Setup to prepare your machine, then open Session-I.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#live-code",
+    "href": "index.html#live-code",
+    "title": "Introduction to R and RStudio",
+    "section": "Live code",
+    "text": "Live code\nThe Foundations session runs R in your browser (webR), so you can edit and run code on the page with nothing installed. For the full hands-on work you use R and RStudio on your own machine.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Introduction to R and RStudio",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nDeveloped at AIIMS Bibinagar and the Achutha Menon Centre for Health Science Studies, SCTIMST. Built on R, the tidyverse, and Quarto.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#genesis",
+    "href": "slides-session2-best-practices.html#genesis",
+    "title": "Best Practices in Data Science",
+    "section": "Genesis",
+    "text": "Genesis\n\nDigital Platforms for Disease Surveillance and Control: Best Practices from Asia (DMgtAsia)\nBridge the gap between public health and technology\nPost COVID-19: Need for data-driven decision-making at scale\nLimited training capacity in LMICs in this area\nDevelop standardized, reproducible best practices that can be adapted globally"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#why-best-practices-matter",
+    "href": "slides-session2-best-practices.html#why-best-practices-matter",
+    "title": "Best Practices in Data Science",
+    "section": "Why Best Practices Matter",
+    "text": "Why Best Practices Matter\n\n\nProvide Guidance to navigate the complexities of data science\nPlethora of information on Data Science available, without clear direction\nHandholding in your learning journey, not learning in isolation\nSteep Learning Curve: structured pathways reduce frustration"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#why-best-practices-matter-cont.",
+    "href": "slides-session2-best-practices.html#why-best-practices-matter-cont.",
+    "title": "Best Practices in Data Science",
+    "section": "Why Best Practices Matter (cont.)",
+    "text": "Why Best Practices Matter (cont.)\n\n\nInevitable use of AI: a Human in the Loop approach\nSet you apart from the crowd: credibility through proven methods\nConsistency among trainers, to maintain quality"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#what-are-these-best-practices",
+    "href": "slides-session2-best-practices.html#what-are-these-best-practices",
+    "title": "Best Practices in Data Science",
+    "section": "What are these Best Practices?",
+    "text": "What are these Best Practices?\n\n\nBased on a Scientific Approach\n\nGrounded in epidemiological principles and data science methodology\nValidated in the real-world and through peer-reviewed literature\n\n\n\n\nTried & Tested for over a decade of working in this Area\n\nSCTIMST: Public Health Technologies Training Modules\nResource Faculty: Years of collective experience in teaching"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#what-are-these-best-practices-1",
+    "href": "slides-session2-best-practices.html#what-are-these-best-practices-1",
+    "title": "Best Practices in Data Science",
+    "section": "What are these Best Practices?",
+    "text": "What are these Best Practices?\n\n\nWalk the Talk\n\nWe actively use these practices in our day-to-day teaching & research\nWe make conscious decisions to use these best practices in our own work\nSelf critique and Support one another\n\n\n\n\nWorked for over 300+ learners from over 75+ institutions\n\nMedical professionals, informaticians, data scientists, healthcare workers\nRecognised a Best Practice in Public Health Teaching (IAPSMCON-2024)\nMultiple Verticals"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#what-are-these-best-practices-2",
+    "href": "slides-session2-best-practices.html#what-are-these-best-practices-2",
+    "title": "Best Practices in Data Science",
+    "section": "What are these Best Practices?",
+    "text": "What are these Best Practices?\n\n\nState of the Art tools\n\nR: Developed by and for statisticians and epidemiologists\ntidyverse: Industry-standard for reproducible workflows\nQuarto: A Language Agnostic Dynamic Authoring Framework\n\n\n\n\nIndustry Standard\n\nAligns with international best practices\nRecognized by WHO, CDC, UNICEF, and global health agencies\nFacilitates collaboration with other research teams"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#core-philosophies",
+    "href": "slides-session2-best-practices.html#core-philosophies",
+    "title": "Best Practices in Data Science",
+    "section": "Core Philosophies",
+    "text": "Core Philosophies\n\n\nData Science is a Tool for Social Good, Not an End in Itself\n\n\n\n\nData for Better Lives\n\n\n\n\n3D Commission Recommendations\n\n\n\n\nFAIR Data Principles\n\n\n\n\nThe Public Health Lens\nBridging Disciplines"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#what-is-reproducibility",
+    "href": "slides-session2-best-practices.html#what-is-reproducibility",
+    "title": "Best Practices in Data Science",
+    "section": "What is Reproducibility",
+    "text": "What is Reproducibility"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#fair-principles-and-reproducibility",
+    "href": "slides-session2-best-practices.html#fair-principles-and-reproducibility",
+    "title": "Best Practices in Data Science",
+    "section": "FAIR Principles and Reproducibility",
+    "text": "FAIR Principles and Reproducibility"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#fair-and-care",
+    "href": "slides-session2-best-practices.html#fair-and-care",
+    "title": "Best Practices in Data Science",
+    "section": "FAIR and CARE",
+    "text": "FAIR and CARE"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#fair-principles-and-reproducibility-1",
+    "href": "slides-session2-best-practices.html#fair-principles-and-reproducibility-1",
+    "title": "Best Practices in Data Science",
+    "section": "FAIR Principles and Reproducibility",
+    "text": "FAIR Principles and Reproducibility"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#reproducible-workflows",
+    "href": "slides-session2-best-practices.html#reproducible-workflows",
+    "title": "Best Practices in Data Science",
+    "section": "Reproducible Workflows",
+    "text": "Reproducible Workflows"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#the-reproducibility-spectrum",
+    "href": "slides-session2-best-practices.html#the-reproducibility-spectrum",
+    "title": "Best Practices in Data Science",
+    "section": "The Reproducibility Spectrum",
+    "text": "The Reproducibility Spectrum"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#why-r-and-not-other-tools",
+    "href": "slides-session2-best-practices.html#why-r-and-not-other-tools",
+    "title": "Best Practices in Data Science",
+    "section": "Why R (and not other tools)?",
+    "text": "Why R (and not other tools)?\n\n\nBorn from S language, specifically designed for statistical analysis\nThe global epidemiology and biostatistics community uses R\nHundreds of packages for health research\nOpen-source: you can see how calculations are done\nWindows, Mac, Linux: runs even on older computers\nThousands of tutorials, Stack Overflow answers"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#r-vs.-alternatives-for-health-research",
+    "href": "slides-session2-best-practices.html#r-vs.-alternatives-for-health-research",
+    "title": "Best Practices in Data Science",
+    "section": "R vs. Alternatives for Health Research",
+    "text": "R vs. Alternatives for Health Research\n\n\n\n\n\n\n\n\nTool\nStrength\nLimitation\n\n\n\n\nExcel\nAccessible, intuitive\nProne to errors, not reproducible\n\n\nSPSS/Stata\nUser-friendly GUI\nExpensive, less transparent, limited Customization Options\n\n\nTableau/Jamovi\nLess Expensive than others\nLimited Analysis Options\n\n\nPython\nGeneral-purpose, flexible\nSteeper learning curve for epidemiologists\n\n\nR\nPurpose-built for stats, reproducible, free\nSlightly steeper initial learning curve"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#the-r-ecosystem",
+    "href": "slides-session2-best-practices.html#the-r-ecosystem",
+    "title": "Best Practices in Data Science",
+    "section": "The R Ecosystem",
+    "text": "The R Ecosystem\n\n\nR Programming Language: The Engine!\nRStudio IDE: The Dashboard!\nQuarto/R Markdown: Combine narrative text + code + output (reproducible documents)\ntidyverse: Collection of R packages designed for modern data workflows"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#what-is-literate-programming",
+    "href": "slides-session2-best-practices.html#what-is-literate-programming",
+    "title": "Best Practices in Data Science",
+    "section": "What is Literate Programming?",
+    "text": "What is Literate Programming?\n\nCode + Narrative + Output = Single Document\n\n\nStart with a DATA DICTIONARY\n\nThe Concept (Donald Knuth, 1984)\n\nPrograms should be written for people to read, not just for machines to execute\nMix explanation with code\nGenerate analysis reports that are reproducible and transparent"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#in-practice-quartor-markdown",
+    "href": "slides-session2-best-practices.html#in-practice-quartor-markdown",
+    "title": "Best Practices in Data Science",
+    "section": "In Practice: Quarto/R Markdown",
+    "text": "In Practice: Quarto/R Markdown\nWrite it once. The document weaves narrative, code, and output together:\n\n\n\nattack_rates.qmd\n# Age-Stratified Attack Rates\n\nAttack rates by age group for the Sholayur Acute Gastroenteritis outbreak.\n\n## Data Preparation\n\n```{r}\nage_data &lt;- read_csv(here(\"data\", \"family_members.csv\")) |&gt;\n  mutate(age_group = factor(age_group,\n    levels = c(\"0-4\", \"5-17\", \"18-64\", \"65+\")))\n```\n\n## Results\n\n```{r}\nage_data |&gt;\n  group_by(age_group) |&gt;\n  summarise(\n    n_symptomatic = sum(symptomatic, na.rm = TRUE),\n    n_total       = n(),\n    attack_rate   = n_symptomatic / n_total * 100\n  )\n```"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#project-organization",
+    "href": "slides-session2-best-practices.html#project-organization",
+    "title": "Best Practices in Data Science",
+    "section": "Project Organization",
+    "text": "Project Organization\nA well-organized project is a well-organized mind.\nStandard Directory Structure\nmy_analysis/\n├── README.md              # Project overview\n├── data/\n│   ├── raw/              # Never modify\n│   │   └── gastroenteritis_sholayur.csv\n│   ├── processed/        # Cleaned, validated data\n│   │   └── gastroenteritis_clean.csv\n│   └── data_dictionary.md\n├── scripts/\n│   ├── 01_data_cleaning.R\n│   ├── 02_descriptive_analysis.R\n│   └── 03_inferential_stats.R\n├── results/\n│   ├── tables/\n│   ├── figures/\n│   └── outputs/\n├── reports/\n│   ├── outbreak_report.qmd\n│   └── outbreak_report.html\n├── docs/\n│   ├── protocol_v3.pdf\n│   └── iec_approval.pdf\n└── .gitignore"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#naming-conventions",
+    "href": "slides-session2-best-practices.html#naming-conventions",
+    "title": "Best Practices in Data Science",
+    "section": "Naming Conventions",
+    "text": "Naming Conventions"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#naming-conventions-1",
+    "href": "slides-session2-best-practices.html#naming-conventions-1",
+    "title": "Best Practices in Data Science",
+    "section": "Naming Conventions",
+    "text": "Naming Conventions\n\nScripts:\n\nstroke_data_exploration.R, dengue_data_visualization.R, instead of scrpit1, script2\nCan consider 01_, 02_ … for indicating sequential execution"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#naming-conventions-cont.",
+    "href": "slides-session2-best-practices.html#naming-conventions-cont.",
+    "title": "Best Practices in Data Science",
+    "section": "Naming Conventions (cont.)",
+    "text": "Naming Conventions (cont.)\n\n\nVariables:\n\nage_group not ageGrp or AgGr (consistency matters)\nDo not start variable names with numbers\nConsider adding prefix/suffix to indicate variable type (state_fct, age_group_chr)\ndem_q1, dem_q2, dem_q3, health_financing_q1, health_financing_q2\nAdd variable labels if necessary using the labelled package"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#naming-conventions-2",
+    "href": "slides-session2-best-practices.html#naming-conventions-2",
+    "title": "Best Practices in Data Science",
+    "section": "Naming Conventions",
+    "text": "Naming Conventions\n\nFiles:\n\noutbreak_analysis_2025_11_07.R (date in YYYY_MM_DD format)\n\nDates:\n\nAlways ISO 8601 (YYYY-MM-DD) in code for consistency across regions\nUse _date suffix for indicating dates\n\nVersions:\n\nUse version for better management outbreak_analysis_2025_11_07_v2.R instead of outbreak_analysis_2025_11_07_final_final.R"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#why-coding-style-matters",
+    "href": "slides-session2-best-practices.html#why-coding-style-matters",
+    "title": "Best Practices in Data Science",
+    "section": "Why Coding Style Matters",
+    "text": "Why Coding Style Matters\nCode is read 10x more often than it’s written.\nThe Google R Style Guide Approach\n# GOOD: Clear, readable, consistent\ncalculate_attack_rate &lt;- function(symptomatic_count, total_count) {\n  # Calculate attack rate as percentage\n  # Args:\n  #   symptomatic_count: Number of symptomatic individuals\n  #   total_count: Total population at risk\n  # Returns:\n  #   Attack rate as percentage (0-100)\n  \n  if (total_count == 0) {\n    return(NA)\n  }\n  \n  (symptomatic_count / total_count) * 100\n}\n\n# BAD: Unclear naming, no comments\nar &lt;- function(s, t) {\n  (s/t)*100\n}"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#example-good-vs.-bad",
+    "href": "slides-session2-best-practices.html#example-good-vs.-bad",
+    "title": "Best Practices in Data Science",
+    "section": "Example: Good vs. Bad",
+    "text": "Example: Good vs. Bad\n\nBadGood\n\n\nd&lt;-read.csv('file.csv')\nd$ag&lt;-cut(d$a,c(0,5,18,65,150))\nd$ar&lt;-ifelse(d$d==1,1,0)*100/d$t\n\n\n# This script creates age_group variable from age column\n\n# Load Packages\npacman::p_load(tidyverse, here)\n\n# Load Data\nage_data &lt;- read_csv(here(\"data\", \"age_sholayur.csv\"))\n\n# Create age groups with meaningful labels\nage_data &lt;- age_data |&gt;\n  mutate(\n    age_group = case_when(age &lt; 5 ~  \"0-4\",\n                          age &lt; 18 ~  \"5-17\",\n                          age &lt; 65 ~  \"18-64\",\n                          age &gt;= 65 ~  \"65+\")\n        ) |&gt;\n  mutate(\n    age_group = factor(age_group, \n                        levels = c(\"0-4\", \"5-17\", \"18-64\", \"65+\"))) |&gt;\n  )"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#what-is-tidy-data",
+    "href": "slides-session2-best-practices.html#what-is-tidy-data",
+    "title": "Best Practices in Data Science",
+    "section": "What is “Tidy Data”?",
+    "text": "What is “Tidy Data”?\nA standardized way to structure datasets for analysis."
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#hadley-wickhams-principles",
+    "href": "slides-session2-best-practices.html#hadley-wickhams-principles",
+    "title": "Best Practices in Data Science",
+    "section": "Hadley Wickham’s Principles",
+    "text": "Hadley Wickham’s Principles\n\nEach variable is a column\nEach observation is a row\nEach value has its own cell"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#why-tidy-data-matters-for-your-analysis",
+    "href": "slides-session2-best-practices.html#why-tidy-data-matters-for-your-analysis",
+    "title": "Best Practices in Data Science",
+    "section": "Why Tidy Data Matters for Your Analysis",
+    "text": "Why Tidy Data Matters for Your Analysis\n\n\n\n\n\n\n\nSource: Hadley Wickham and Garrett Grolemund. 2017. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data (1st. ed.). O’Reilly Media, Inc."
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#converting-messy-to-tidy",
+    "href": "slides-session2-best-practices.html#converting-messy-to-tidy",
+    "title": "Best Practices in Data Science",
+    "section": "Converting Messy to Tidy",
+    "text": "Converting Messy to Tidy"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#continuous-improvement-mindset",
+    "href": "slides-session2-best-practices.html#continuous-improvement-mindset",
+    "title": "Best Practices in Data Science",
+    "section": "Continuous Improvement Mindset",
+    "text": "Continuous Improvement Mindset\nData Science and Public Health are Evolving Fields\n\nEmbrace Change, Manage It Thoughtfully\nAvoid Common Pitfalls"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#continuous-improvement-mindset-cont.",
+    "href": "slides-session2-best-practices.html#continuous-improvement-mindset-cont.",
+    "title": "Best Practices in Data Science",
+    "section": "Continuous Improvement Mindset (cont.)",
+    "text": "Continuous Improvement Mindset (cont.)\nLearning Strategies for Trainers\n\nRead widely\nExperiment safely\nDocument lessons learned\nPeer review\nStay grounded"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#ai-is-now-part-of-the-workflow",
+    "href": "slides-session2-best-practices.html#ai-is-now-part-of-the-workflow",
+    "title": "Best Practices in Data Science",
+    "section": "AI is Now Part of the Workflow",
+    "text": "AI is Now Part of the Workflow\nThe use of AI is inevitable. Using it well is a choice.\n\nIt writes code, drafts text, and explains errors in seconds\nBut it is fluent and confident even when it is wrong\nWhat you get back depends on the quality of what you ask for\nStay the Human in the Loop: AI assists, you decide\n\n\n\nThe prompt, not the model, decides whether the output is any good."
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#four-prompting-strategies",
+    "href": "slides-session2-best-practices.html#four-prompting-strategies",
+    "title": "Best Practices in Data Science",
+    "section": "Four prompting strategies",
+    "text": "Four prompting strategies\n\n\n\n\n\n\n\n\nStrategy\nWhat it is\nBest for\n\n\n\n\nZero-shot\nJust ask, no examples\nDescriptive stats\n\n\nExplicit\nNumbered steps incl. checks\nWorkflows that mustn’t skip steps\n\n\nChain-of-thought\n“Think step by step”\nAuditing the reasoning\n\n\nHybrid\nSteps + reasoning + format\nInferential — the default\n\n\n\n\nRule of thumb: descriptive → zero-shot; inferential → hybrid."
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#example-vague-vs.-briefed",
+    "href": "slides-session2-best-practices.html#example-vague-vs.-briefed",
+    "title": "Best Practices in Data Science",
+    "section": "Example: Vague vs. Briefed",
+    "text": "Example: Vague vs. Briefed\n\nVagueBriefed\n\n\nAnalyse this data and run a t-test.\nSkips the assumptions, guesses the design, picks a test for you.\n\n\nYou are a biostatistician.\n&lt;context&gt; two-arm trial, 20 patients per arm,\noutcome is systolic blood pressure &lt;/context&gt;\n&lt;data&gt; ... &lt;/data&gt;\n\n1. Test for normality and equal variance.\n2. Choose the correct test and justify it.\n3. Report a table: statistic, df, p-value, 95% CI.\n4. Interpret in plain language."
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#iterate-do-not-perfect",
+    "href": "slides-session2-best-practices.html#iterate-do-not-perfect",
+    "title": "Best Practices in Data Science",
+    "section": "Iterate, Do Not Perfect",
+    "text": "Iterate, Do Not Perfect\n\nThe first answer is the average answer; the second is usually better\nRefine in small steps rather than crafting one perfect prompt\nAsk for alternatives and for the reasoning, not just the result\nResist sycophancy: ask the model to critique, not to confirm\n\n“Grade this analysis against these criteria” beats “this looks fine, right?”"
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#prompting-is-part-of-your-methods",
+    "href": "slides-session2-best-practices.html#prompting-is-part-of-your-methods",
+    "title": "Best Practices in Data Science",
+    "section": "Prompting is Part of Your Methods",
+    "text": "Prompting is Part of Your Methods\nThe same discipline as Reproducibility (#2) and Literate Programming (#4).\n\nSave the prompts that worked, inside the project (prompts/)\nRecord the model, its version, and the date\nSet a low temperature for analysis you must reproduce\nValidate every AI-generated number in R before it enters a report\nNever paste identifiable patient data into a cloud LLM\n\n\n\nProblem formulation beats perfect wording. Think first, prompt second."
+  },
+  {
+    "objectID": "slides-session2-best-practices.html#benefits-of-sharing-and-acknowledging",
+    "href": "slides-session2-best-practices.html#benefits-of-sharing-and-acknowledging",
+    "title": "Best Practices in Data Science",
+    "section": "Benefits of Sharing and Acknowledging",
+    "text": "Benefits of Sharing and Acknowledging\n\nNo single person has all the expertise needed in public health data science.\nOpportunity to learn from peers\nImproves your credibility & citations\nOpens avenues for collaboration\nSelf Marketing!"
+  },
+  {
+    "objectID": "session2-best-practices.html",
+    "href": "session2-best-practices.html",
+    "title": "Best Practices in Data Science",
+    "section": "",
+    "text": "Digital Platforms for Disease Surveillance and Control: Best Practices from Asia (DMgtAsia)\nBridge the gap between public health and technology\nPost COVID-19: Need for data-driven decision-making at scale\nLimited training capacity in LMICs in this area\nDevelop standardized, reproducible best practices that can be adapted globally\n\n\n\n\n\n\nProvide Guidance to navigate the complexities of data science\nPlethora of information on Data Science available, without clear direction\nHandholding in your learning journey, not learning in isolation\nSteep Learning Curve: structured pathways reduce frustration\n\n\n\n\n\n\n\nInevitable use of AI: a Human in the Loop approach\nSet you apart from the crowd: credibility through proven methods\nConsistency among trainers, to maintain quality\n\n\n\n\n\n\nBased on a Scientific Approach\n\nGrounded in epidemiological principles and data science methodology\nValidated in the real-world and through peer-reviewed literature\n\n\n\n\nTried & Tested for over a decade of working in this Area\n\nSCTIMST: Public Health Technologies Training Modules\nResource Faculty: Years of collective experience in teaching\n\n\n\n\n\n\n\nWalk the Talk\n\nWe actively use these practices in our day-to-day teaching & research\nWe make conscious decisions to use these best practices in our own work\nSelf critique and Support one another\n\n\n\n\nWorked for over 300+ learners from over 75+ institutions\n\nMedical professionals, informaticians, data scientists, healthcare workers\nRecognised a Best Practice in Public Health Teaching (IAPSMCON-2024)\nMultiple Verticals\n\n\n\n\n\n\n\nState of the Art tools\n\nR: Developed by and for statisticians and epidemiologists\ntidyverse: Industry-standard for reproducible workflows\nQuarto: A Language Agnostic Dynamic Authoring Framework\n\n\n\n\nIndustry Standard\n\nAligns with international best practices\nRecognized by WHO, CDC, UNICEF, and global health agencies\nFacilitates collaboration with other research teams",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#genesis",
+    "href": "session2-best-practices.html#genesis",
+    "title": "Best Practices in Data Science",
+    "section": "",
+    "text": "Digital Platforms for Disease Surveillance and Control: Best Practices from Asia (DMgtAsia)\nBridge the gap between public health and technology\nPost COVID-19: Need for data-driven decision-making at scale\nLimited training capacity in LMICs in this area\nDevelop standardized, reproducible best practices that can be adapted globally",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#why-best-practices-matter",
+    "href": "session2-best-practices.html#why-best-practices-matter",
+    "title": "Best Practices in Data Science",
+    "section": "",
+    "text": "Provide Guidance to navigate the complexities of data science\nPlethora of information on Data Science available, without clear direction\nHandholding in your learning journey, not learning in isolation\nSteep Learning Curve: structured pathways reduce frustration",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#why-best-practices-matter-cont.",
+    "href": "session2-best-practices.html#why-best-practices-matter-cont.",
+    "title": "Best Practices in Data Science",
+    "section": "",
+    "text": "Inevitable use of AI: a Human in the Loop approach\nSet you apart from the crowd: credibility through proven methods\nConsistency among trainers, to maintain quality",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#what-are-these-best-practices",
+    "href": "session2-best-practices.html#what-are-these-best-practices",
+    "title": "Best Practices in Data Science",
+    "section": "",
+    "text": "Based on a Scientific Approach\n\nGrounded in epidemiological principles and data science methodology\nValidated in the real-world and through peer-reviewed literature\n\n\n\n\nTried & Tested for over a decade of working in this Area\n\nSCTIMST: Public Health Technologies Training Modules\nResource Faculty: Years of collective experience in teaching",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#what-are-these-best-practices-1",
+    "href": "session2-best-practices.html#what-are-these-best-practices-1",
+    "title": "Best Practices in Data Science",
+    "section": "",
+    "text": "Walk the Talk\n\nWe actively use these practices in our day-to-day teaching & research\nWe make conscious decisions to use these best practices in our own work\nSelf critique and Support one another\n\n\n\n\nWorked for over 300+ learners from over 75+ institutions\n\nMedical professionals, informaticians, data scientists, healthcare workers\nRecognised a Best Practice in Public Health Teaching (IAPSMCON-2024)\nMultiple Verticals",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#what-are-these-best-practices-2",
+    "href": "session2-best-practices.html#what-are-these-best-practices-2",
+    "title": "Best Practices in Data Science",
+    "section": "",
+    "text": "State of the Art tools\n\nR: Developed by and for statisticians and epidemiologists\ntidyverse: Industry-standard for reproducible workflows\nQuarto: A Language Agnostic Dynamic Authoring Framework\n\n\n\n\nIndustry Standard\n\nAligns with international best practices\nRecognized by WHO, CDC, UNICEF, and global health agencies\nFacilitates collaboration with other research teams",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#core-philosophies",
+    "href": "session2-best-practices.html#core-philosophies",
+    "title": "Best Practices in Data Science",
+    "section": "Core Philosophies",
+    "text": "Core Philosophies\n\n\nData Science is a Tool for Social Good, Not an End in Itself\n\n\n\n\nData for Better Lives\n\n\n\n\n3D Commission Recommendations\n\n\n\n\nFAIR Data Principles\n\n\n\n\nThe Public Health Lens\nBridging Disciplines",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#what-is-reproducibility",
+    "href": "session2-best-practices.html#what-is-reproducibility",
+    "title": "Best Practices in Data Science",
+    "section": "What is Reproducibility",
+    "text": "What is Reproducibility",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#fair-principles-and-reproducibility",
+    "href": "session2-best-practices.html#fair-principles-and-reproducibility",
+    "title": "Best Practices in Data Science",
+    "section": "FAIR Principles and Reproducibility",
+    "text": "FAIR Principles and Reproducibility",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#fair-and-care",
+    "href": "session2-best-practices.html#fair-and-care",
+    "title": "Best Practices in Data Science",
+    "section": "FAIR and CARE",
+    "text": "FAIR and CARE",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#fair-principles-and-reproducibility-1",
+    "href": "session2-best-practices.html#fair-principles-and-reproducibility-1",
+    "title": "Best Practices in Data Science",
+    "section": "FAIR Principles and Reproducibility",
+    "text": "FAIR Principles and Reproducibility",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#reproducible-workflows",
+    "href": "session2-best-practices.html#reproducible-workflows",
+    "title": "Best Practices in Data Science",
+    "section": "Reproducible Workflows",
+    "text": "Reproducible Workflows",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#the-reproducibility-spectrum",
+    "href": "session2-best-practices.html#the-reproducibility-spectrum",
+    "title": "Best Practices in Data Science",
+    "section": "The Reproducibility Spectrum",
+    "text": "The Reproducibility Spectrum",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#why-r-and-not-other-tools",
+    "href": "session2-best-practices.html#why-r-and-not-other-tools",
+    "title": "Best Practices in Data Science",
+    "section": "Why R (and not other tools)?",
+    "text": "Why R (and not other tools)?\n\n\n\nBorn from S language, specifically designed for statistical analysis\nThe global epidemiology and biostatistics community uses R\nHundreds of packages for health research\nOpen-source: you can see how calculations are done\nWindows, Mac, Linux: runs even on older computers\nThousands of tutorials, Stack Overflow answers",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#r-vs.-alternatives-for-health-research",
+    "href": "session2-best-practices.html#r-vs.-alternatives-for-health-research",
+    "title": "Best Practices in Data Science",
+    "section": "R vs. Alternatives for Health Research",
+    "text": "R vs. Alternatives for Health Research\n\n\n\n\n\n\n\n\n\nTool\nStrength\nLimitation\n\n\n\n\nExcel\nAccessible, intuitive\nProne to errors, not reproducible\n\n\nSPSS/Stata\nUser-friendly GUI\nExpensive, less transparent, limited Customization Options\n\n\nTableau/Jamovi\nLess Expensive than others\nLimited Analysis Options\n\n\nPython\nGeneral-purpose, flexible\nSteeper learning curve for epidemiologists\n\n\nR\nPurpose-built for stats, reproducible, free\nSlightly steeper initial learning curve",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#the-r-ecosystem",
+    "href": "session2-best-practices.html#the-r-ecosystem",
+    "title": "Best Practices in Data Science",
+    "section": "The R Ecosystem",
+    "text": "The R Ecosystem\n\n\nR Programming Language: The Engine!\nRStudio IDE: The Dashboard!\nQuarto/R Markdown: Combine narrative text + code + output (reproducible documents)\ntidyverse: Collection of R packages designed for modern data workflows",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#what-is-literate-programming",
+    "href": "session2-best-practices.html#what-is-literate-programming",
+    "title": "Best Practices in Data Science",
+    "section": "What is Literate Programming?",
+    "text": "What is Literate Programming?\n\nCode + Narrative + Output = Single Document\n\n\nStart with a DATA DICTIONARY\n\n\nThe Concept (Donald Knuth, 1984)\n\nPrograms should be written for people to read, not just for machines to execute\nMix explanation with code\nGenerate analysis reports that are reproducible and transparent",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#in-practice-quartor-markdown",
+    "href": "session2-best-practices.html#in-practice-quartor-markdown",
+    "title": "Best Practices in Data Science",
+    "section": "In Practice: Quarto/R Markdown",
+    "text": "In Practice: Quarto/R Markdown\nWrite it once. The document weaves narrative, code, and output together:\n\n\n\nattack_rates.qmd\n# Age-Stratified Attack Rates\n\nAttack rates by age group for the Sholayur Acute Gastroenteritis outbreak.\n\n## Data Preparation\n\n```{r}\nage_data &lt;- read_csv(here(\"data\", \"family_members.csv\")) |&gt;\n  mutate(age_group = factor(age_group,\n    levels = c(\"0-4\", \"5-17\", \"18-64\", \"65+\")))\n```\n\n## Results\n\n```{r}\nage_data |&gt;\n  group_by(age_group) |&gt;\n  summarise(\n    n_symptomatic = sum(symptomatic, na.rm = TRUE),\n    n_total       = n(),\n    attack_rate   = n_symptomatic / n_total * 100\n  )\n```",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#project-organization",
+    "href": "session2-best-practices.html#project-organization",
+    "title": "Best Practices in Data Science",
+    "section": "Project Organization",
+    "text": "Project Organization\nA well-organized project is a well-organized mind.\n\nStandard Directory Structure\nmy_analysis/\n├── README.md              # Project overview\n├── data/\n│   ├── raw/              # Never modify\n│   │   └── gastroenteritis_sholayur.csv\n│   ├── processed/        # Cleaned, validated data\n│   │   └── gastroenteritis_clean.csv\n│   └── data_dictionary.md\n├── scripts/\n│   ├── 01_data_cleaning.R\n│   ├── 02_descriptive_analysis.R\n│   └── 03_inferential_stats.R\n├── results/\n│   ├── tables/\n│   ├── figures/\n│   └── outputs/\n├── reports/\n│   ├── outbreak_report.qmd\n│   └── outbreak_report.html\n├── docs/\n│   ├── protocol_v3.pdf\n│   └── iec_approval.pdf\n└── .gitignore",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#naming-conventions",
+    "href": "session2-best-practices.html#naming-conventions",
+    "title": "Best Practices in Data Science",
+    "section": "Naming Conventions",
+    "text": "Naming Conventions",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#naming-conventions-1",
+    "href": "session2-best-practices.html#naming-conventions-1",
+    "title": "Best Practices in Data Science",
+    "section": "Naming Conventions",
+    "text": "Naming Conventions\n\nScripts:\n\nstroke_data_exploration.R, dengue_data_visualization.R, instead of scrpit1, script2\nCan consider 01_, 02_ … for indicating sequential execution",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#naming-conventions-cont.",
+    "href": "session2-best-practices.html#naming-conventions-cont.",
+    "title": "Best Practices in Data Science",
+    "section": "Naming Conventions (cont.)",
+    "text": "Naming Conventions (cont.)\n\n\nVariables:\n\nage_group not ageGrp or AgGr (consistency matters)\nDo not start variable names with numbers\nConsider adding prefix/suffix to indicate variable type (state_fct, age_group_chr)\ndem_q1, dem_q2, dem_q3, health_financing_q1, health_financing_q2\nAdd variable labels if necessary using the labelled package",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#naming-conventions-2",
+    "href": "session2-best-practices.html#naming-conventions-2",
+    "title": "Best Practices in Data Science",
+    "section": "Naming Conventions",
+    "text": "Naming Conventions\n\nFiles:\n\noutbreak_analysis_2025_11_07.R (date in YYYY_MM_DD format)\n\nDates:\n\nAlways ISO 8601 (YYYY-MM-DD) in code for consistency across regions\nUse _date suffix for indicating dates\n\nVersions:\n\nUse version for better management outbreak_analysis_2025_11_07_v2.R instead of outbreak_analysis_2025_11_07_final_final.R",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#why-coding-style-matters",
+    "href": "session2-best-practices.html#why-coding-style-matters",
+    "title": "Best Practices in Data Science",
+    "section": "Why Coding Style Matters",
+    "text": "Why Coding Style Matters\nCode is read 10x more often than it’s written.\n\nThe Google R Style Guide Approach\n# GOOD: Clear, readable, consistent\ncalculate_attack_rate &lt;- function(symptomatic_count, total_count) {\n  # Calculate attack rate as percentage\n  # Args:\n  #   symptomatic_count: Number of symptomatic individuals\n  #   total_count: Total population at risk\n  # Returns:\n  #   Attack rate as percentage (0-100)\n  \n  if (total_count == 0) {\n    return(NA)\n  }\n  \n  (symptomatic_count / total_count) * 100\n}\n\n# BAD: Unclear naming, no comments\nar &lt;- function(s, t) {\n  (s/t)*100\n}",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#example-good-vs.-bad",
+    "href": "session2-best-practices.html#example-good-vs.-bad",
+    "title": "Best Practices in Data Science",
+    "section": "Example: Good vs. Bad",
+    "text": "Example: Good vs. Bad\n\nBadGood\n\n\nd&lt;-read.csv('file.csv')\nd$ag&lt;-cut(d$a,c(0,5,18,65,150))\nd$ar&lt;-ifelse(d$d==1,1,0)*100/d$t\n\n\n# This script creates age_group variable from age column\n\n# Load Packages\npacman::p_load(tidyverse, here)\n\n# Load Data\nage_data &lt;- read_csv(here(\"data\", \"age_sholayur.csv\"))\n\n# Create age groups with meaningful labels\nage_data &lt;- age_data |&gt;\n  mutate(\n    age_group = case_when(age &lt; 5 ~  \"0-4\",\n                          age &lt; 18 ~  \"5-17\",\n                          age &lt; 65 ~  \"18-64\",\n                          age &gt;= 65 ~  \"65+\")\n        ) |&gt;\n  mutate(\n    age_group = factor(age_group, \n                        levels = c(\"0-4\", \"5-17\", \"18-64\", \"65+\"))) |&gt;\n  )",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#what-is-tidy-data",
+    "href": "session2-best-practices.html#what-is-tidy-data",
+    "title": "Best Practices in Data Science",
+    "section": "What is “Tidy Data”?",
+    "text": "What is “Tidy Data”?\nA standardized way to structure datasets for analysis.",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#hadley-wickhams-principles",
+    "href": "session2-best-practices.html#hadley-wickhams-principles",
+    "title": "Best Practices in Data Science",
+    "section": "Hadley Wickham’s Principles",
+    "text": "Hadley Wickham’s Principles\n\nEach variable is a column\nEach observation is a row\nEach value has its own cell",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#why-tidy-data-matters-for-your-analysis",
+    "href": "session2-best-practices.html#why-tidy-data-matters-for-your-analysis",
+    "title": "Best Practices in Data Science",
+    "section": "Why Tidy Data Matters for Your Analysis",
+    "text": "Why Tidy Data Matters for Your Analysis\n\n\n\n\n\n\n\nSource: Hadley Wickham and Garrett Grolemund. 2017. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data (1st. ed.). O’Reilly Media, Inc.",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#converting-messy-to-tidy",
+    "href": "session2-best-practices.html#converting-messy-to-tidy",
+    "title": "Best Practices in Data Science",
+    "section": "Converting Messy to Tidy",
+    "text": "Converting Messy to Tidy",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#continuous-improvement-mindset",
+    "href": "session2-best-practices.html#continuous-improvement-mindset",
+    "title": "Best Practices in Data Science",
+    "section": "Continuous Improvement Mindset",
+    "text": "Continuous Improvement Mindset\nData Science and Public Health are Evolving Fields\n\nEmbrace Change, Manage It Thoughtfully\nAvoid Common Pitfalls",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#continuous-improvement-mindset-cont.",
+    "href": "session2-best-practices.html#continuous-improvement-mindset-cont.",
+    "title": "Best Practices in Data Science",
+    "section": "Continuous Improvement Mindset (cont.)",
+    "text": "Continuous Improvement Mindset (cont.)\n\nLearning Strategies for Trainers\n\nRead widely\nExperiment safely\nDocument lessons learned\nPeer review\nStay grounded",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#ai-is-now-part-of-the-workflow",
+    "href": "session2-best-practices.html#ai-is-now-part-of-the-workflow",
+    "title": "Best Practices in Data Science",
+    "section": "AI is Now Part of the Workflow",
+    "text": "AI is Now Part of the Workflow\nThe use of AI is inevitable. Using it well is a choice.\n\nIt writes code, drafts text, and explains errors in seconds\nBut it is fluent and confident even when it is wrong\nWhat you get back depends on the quality of what you ask for\nStay the Human in the Loop: AI assists, you decide\n\n\n\nThe prompt, not the model, decides whether the output is any good.",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#four-prompting-strategies",
+    "href": "session2-best-practices.html#four-prompting-strategies",
+    "title": "Best Practices in Data Science",
+    "section": "Four prompting strategies",
+    "text": "Four prompting strategies\n\n\n\n\n\n\n\n\nStrategy\nWhat it is\nBest for\n\n\n\n\nZero-shot\nJust ask, no examples\nDescriptive stats\n\n\nExplicit\nNumbered steps incl. checks\nWorkflows that mustn’t skip steps\n\n\nChain-of-thought\n“Think step by step”\nAuditing the reasoning\n\n\nHybrid\nSteps + reasoning + format\nInferential — the default\n\n\n\n\nRule of thumb: descriptive → zero-shot; inferential → hybrid.",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#example-vague-vs.-briefed",
+    "href": "session2-best-practices.html#example-vague-vs.-briefed",
+    "title": "Best Practices in Data Science",
+    "section": "Example: Vague vs. Briefed",
+    "text": "Example: Vague vs. Briefed\n\nVagueBriefed\n\n\nAnalyse this data and run a t-test.\nSkips the assumptions, guesses the design, picks a test for you.\n\n\nYou are a biostatistician.\n&lt;context&gt; two-arm trial, 20 patients per arm,\noutcome is systolic blood pressure &lt;/context&gt;\n&lt;data&gt; ... &lt;/data&gt;\n\n1. Test for normality and equal variance.\n2. Choose the correct test and justify it.\n3. Report a table: statistic, df, p-value, 95% CI.\n4. Interpret in plain language.",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#iterate-do-not-perfect",
+    "href": "session2-best-practices.html#iterate-do-not-perfect",
+    "title": "Best Practices in Data Science",
+    "section": "Iterate, Do Not Perfect",
+    "text": "Iterate, Do Not Perfect\n\nThe first answer is the average answer; the second is usually better\nRefine in small steps rather than crafting one perfect prompt\nAsk for alternatives and for the reasoning, not just the result\nResist sycophancy: ask the model to critique, not to confirm\n\n“Grade this analysis against these criteria” beats “this looks fine, right?”",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#prompting-is-part-of-your-methods",
+    "href": "session2-best-practices.html#prompting-is-part-of-your-methods",
+    "title": "Best Practices in Data Science",
+    "section": "Prompting is Part of Your Methods",
+    "text": "Prompting is Part of Your Methods\nThe same discipline as Reproducibility (#2) and Literate Programming (#4).\n\nSave the prompts that worked, inside the project (prompts/)\nRecord the model, its version, and the date\nSet a low temperature for analysis you must reproduce\nValidate every AI-generated number in R before it enters a report\nNever paste identifiable patient data into a cloud LLM\n\n\n\nProblem formulation beats perfect wording. Think first, prompt second.",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session2-best-practices.html#benefits-of-sharing-and-acknowledging",
+    "href": "session2-best-practices.html#benefits-of-sharing-and-acknowledging",
+    "title": "Best Practices in Data Science",
+    "section": "Benefits of Sharing and Acknowledging",
+    "text": "Benefits of Sharing and Acknowledging\n\nNo single person has all the expertise needed in public health data science.\nOpportunity to learn from peers\nImproves your credibility & citations\nOpens avenues for collaboration\nSelf Marketing!",
+    "crumbs": [
+      "Home",
+      "Session-II · Best Practices",
+      "Best Practices in Data Science"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html",
+    "href": "session4-exercises.html",
+    "title": "Hands-on Exercises",
+    "section": "",
+    "text": "Practise the workflow from Sessions I to III on a real dataset, in RStudio. Work through the tasks; each has a collapsible solution. The full scripts are in the repo: exercises/d1_low_birth_weight_demo.R and exercises/d1_low_birth_weight_solutions.R.",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html#the-dataset",
+    "href": "session4-exercises.html#the-dataset",
+    "title": "Hands-on Exercises",
+    "section": "The dataset",
+    "text": "The dataset\nWe use birthwt from the MASS package: 189 births from a study of risk factors for low birth weight. Key variables: low (birth weight under 2.5 kg, yes/no), age (mother’s age), lwt (mother’s weight), smoke (smoking during pregnancy), bwt (birth weight in grams).",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html#load-packages-and-data",
+    "href": "session4-exercises.html#load-packages-and-data",
+    "title": "Hands-on Exercises",
+    "section": "1. Load packages and data",
+    "text": "1. Load packages and data\nif (!requireNamespace(\"pacman\", quietly = TRUE)) install.packages(\"pacman\")\npacman::p_load(MASS, tidyverse, skimr, janitor, here)\n\nlbw &lt;- as_tibble(MASS::birthwt)",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html#tidy-the-column-names",
+    "href": "session4-exercises.html#tidy-the-column-names",
+    "title": "Hands-on Exercises",
+    "section": "2. Tidy the column names",
+    "text": "2. Tidy the column names\n\n\n\n\n\n\nNote\n\n\n\nThe birthwt names are terse. Make them tidy and consistent.\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\nlbw &lt;- lbw |&gt; janitor::clean_names()\nnames(lbw)",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html#take-a-first-look",
+    "href": "session4-exercises.html#take-a-first-look",
+    "title": "Hands-on Exercises",
+    "section": "3. Take a first look",
+    "text": "3. Take a first look\n\n\n\n\n\n\nNote\n\n\n\nHow many rows and columns? What types are the variables? Any missing values?\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\nglimpse(lbw)\nskimr::skim(lbw)",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html#recode-for-readability",
+    "href": "session4-exercises.html#recode-for-readability",
+    "title": "Hands-on Exercises",
+    "section": "4. Recode for readability",
+    "text": "4. Recode for readability\n\n\n\n\n\n\nNote\n\n\n\nTurn low and smoke from 0/1 into meaningful labels.\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\nlbw &lt;- lbw |&gt;\n  mutate(\n    low_birth_weight = factor(low, levels = c(0, 1),\n                              labels = c(\"Normal\", \"Low\")),\n    smoking          = factor(smoke, levels = c(0, 1),\n                              labels = c(\"Non-smoker\", \"Smoker\"))\n  )",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html#summarise",
+    "href": "session4-exercises.html#summarise",
+    "title": "Hands-on Exercises",
+    "section": "5. Summarise",
+    "text": "5. Summarise\n\n\n\n\n\n\nNote\n\n\n\nWhat is the mean birth weight by smoking status? How many low-birth-weight babies by smoking status?\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\nlbw |&gt;\n  group_by(smoking) |&gt;\n  summarise(\n    n         = n(),\n    mean_bwt  = mean(bwt),\n    pct_low   = mean(low == 1) * 100\n  )",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html#visualise",
+    "href": "session4-exercises.html#visualise",
+    "title": "Hands-on Exercises",
+    "section": "6. Visualise",
+    "text": "6. Visualise\n\n\n\n\n\n\nNote\n\n\n\nPlot the distribution of birth weight, and compare it by smoking status.\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\nggplot(lbw, aes(bwt)) +\n  geom_histogram(bins = 20) +\n  labs(x = \"Birth weight (g)\", y = \"Count\") +\n  theme_minimal()\n\nggplot(lbw, aes(smoking, bwt)) +\n  geom_boxplot() +\n  labs(x = NULL, y = \"Birth weight (g)\") +\n  theme_minimal()",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  },
+  {
+    "objectID": "session4-exercises.html#stretch-tasks",
+    "href": "session4-exercises.html#stretch-tasks",
+    "title": "Hands-on Exercises",
+    "section": "Stretch tasks",
+    "text": "Stretch tasks\n\nDoes mean birth weight differ by mother’s smoking after grouping by race?\nMake a clean summary table with gtsummary::tbl_summary().\nSave your cleaned data to data/processed/lbw_clean.csv with readr::write_csv() and here().\n\nWhen you are done, you are ready for the Spatial Epidemiology module.",
+    "crumbs": [
+      "Home",
+      "Session-IV · Exercises",
+      "Hands-on Exercises"
+    ]
+  }
+]

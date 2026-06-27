@@ -1,0 +1,214 @@
+---
+title: "Exercise 3: Data Visualization"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+::: {style="text-align:justify"}
+
+The goal of this exercise is to introduce participants to data visualization using R and the ggplot2 package. By working through these tasks, you will learn how to create a variety of plots such as histograms, box plots, scatter plots, and bar charts. These visualizations will help you understand the distribution of the data and explore relationships between variables. Additionally, you will practice adding meaningful titles, labels, and captions to your plots, as well as saving them for future use. This exercise aims to enhance your skills in presenting data effectively using R.
+
+:::
+
+<!-- - Question 1 and 6 are **mandatory for all groups**. -->
+
+<!-- - Question 7 is **optional for all groups**. -->
+
+<!-- - Question 2 - Group 1 -->
+
+<!-- - Question 3 - Group 2 -->
+
+<!-- - Question 4 - Group 3 -->
+
+<!-- - Question 5 - Group 4 -->
+
+## Questions
+
+### **Question 1:** Load the Data and Necessary Packages
+
+- Load the low birth weight dataset into R.
+
+  - *Hint:* Use functions like `read_csv()` and `here()` for loading the data.
+  - *Hint:* Use functions like `pacman::p_load()` for loading the packages.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+# Load necessary packages
+pacman::p_load(tidyverse, here)
+
+# Load the dataset
+df <- read_csv(here("data", "low_birth_weight.csv"))
+
+
+
+```
+
+### **Question 2:** Create a Histogram
+
+- Choose a suitable continuous variable and create a histogram using `ggplot`.
+
+  - Add a title, labels for the x and y axes, and a caption.
+
+  - *Hint:* Use `geom_histogram()`.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+# Create a histogram for the 'bwt' variable
+ggplot(df, aes(x = bwt)) +
+  geom_histogram(binwidth = 100, fill = "blue", color = "black", alpha = 0.7) +
+  labs(
+    title = "Distribution of Birth Weight",
+    x = "Birth Weight (grams)",
+    y = "Frequency",
+    caption = "Source: Low Birth Weight Data"
+  ) +
+  theme_minimal()
+
+
+```
+
+### **Question 3:** Create a Box Plot
+
+- Select an appropriate variable and create a box plot using `ggplot`.
+
+  - Add a title and a caption for the plot.
+
+  - *Hint:* Use `geom_boxplot()`.
+  
+  - try `race` as x axis.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+# Create a box plot for birth weight (bwt) by race
+ggplot(df, aes(x = race, y = bwt)) +
+  geom_boxplot(fill = "lightblue", color = "black") +
+  labs(
+    title = "Box Plot of Birth Weight by Race",
+    x = "Race",
+    y = "Birth Weight (grams)",
+    caption = "Source: Low Birth Weight Data"
+  ) +
+  theme_minimal()
+
+
+
+```
+
+
+### **Question 4:** Create a Scatter Plot
+
+- Generate a scatter plot for the mother's weight (`lwt`) and the child's birth weight (`bwt`), with `race` used as a color grouping in `ggplot`.
+
+  - Include a title, labels for the x and y axes, and a caption.
+
+  - *Hint:* Use `geom_point()`.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+# Scatter plot of mother's weight (lwt) vs birth weight (bwt), colored by race
+ggplot(df, aes(x = lwt, y = bwt, color = race)) +
+  geom_point() +
+  labs(
+    title = "Scatter Plot of Mother's Weight vs Birth Weight",
+    x = "Mother's Weight (lbs)",
+    y = "Birth Weight (grams)",
+    caption = "Source: Low Birth Weight Data"
+  ) +
+  theme_minimal()
+
+
+```
+
+
+### **Question 5:** Create a Bar Chart
+
+- Identify a suitable categorical variable and create a bar chart using `ggplot`.
+
+  - Add a title, labels for the x and y axes, and a caption.
+
+  - *Hint:* Use `geom_bar()` for bar charts.
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+# Bar chart of number of smokers vs non-smokers
+ggplot(df, aes(x = smoke)) +
+  geom_bar(fill = "orange", color = "black") +
+  labs(
+    title = "Bar Chart of Smoking Status",
+    x = "Smoking Status",
+    y = "Count",
+    caption = "Source: Low Birth Weight Data"
+  ) +
+  theme_minimal()
+
+
+```
+
+### **Question 6:** Save the Plot
+
+- Create a folder named `plots` in your R Project directory.
+
+- Save the created plots in the `plots` folder using the `ggsave()` function.
+
+  - *Hint:* Use `ggsave(here::here("plots", "your_plot_name.png")`.
+ 
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+# Create a folder named 'plots' if it doesn't exist
+if(!dir.exists(here("plots"))) {
+  dir.create(here("plots"))
+}
+
+# Save the histogram plot as a PNG file
+ggsave(here("plots", "histogram_bwt.png"))
+
+
+``` 
+
+### **Question 7:** Try `facet_wrap()`
+
+```{r}
+#| code-fold: true
+#| warning: false
+#| message: false
+#| results: false
+
+# Create a scatter plot of 'lwt' vs 'bwt' with facets by race
+ggplot(df, aes(x = lwt, y = bwt)) +
+  geom_point() +
+  facet_wrap(~ race) +
+  labs(
+    title = "Scatter Plot of Mother's Weight vs Birth Weight by Race",
+    x = "Mother's Weight (lbs)",
+    y = "Birth Weight (grams)",
+    caption = "Source: Low Birth Weight Data"
+  ) +
+  theme_minimal()
+
+
+```

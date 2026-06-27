@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Best Practices in Data Science – DMgtAsia · Introduction to R &amp; RStudio</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./dmgt_asia_logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7fde21fbbed941212ff23fc867eda995.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-05ff5bf03ba22d452e1b78981e4b8958.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./dmgt_asia_logo.png" alt="" class="navbar-logo light-content">
+    <img src="./dmgt_asia_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DMgtAsia · Introduction to R &amp; RStudio</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./setup.html"> 
+<span class="menu-text">Setup</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/drarunmitra/DMgtAsia_DataScience_IntroR"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./session2-best-practices.html">Session-II · Best Practices</a></li><li class="breadcrumb-item"><a href="./session2-best-practices.html">Best Practices in Data Science</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Session-I · Foundations</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session1-foundations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Foundations of R &amp; RStudio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Session-II · Best Practices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session2-best-practices.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Best Practices in Data Science</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Session-III · Working with Data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session3-working-with-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Data in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Session-IV · Exercises</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./session4-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-on Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Reference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-the-need-for-best-practices" id="toc-why-the-need-for-best-practices" class="nav-link active" data-scroll-target="#why-the-need-for-best-practices">Why the need for Best Practices?</a>
+  <ul class="collapse">
+  <li><a href="#genesis" id="toc-genesis" class="nav-link" data-scroll-target="#genesis">Genesis</a></li>
+  <li><a href="#why-best-practices-matter" id="toc-why-best-practices-matter" class="nav-link" data-scroll-target="#why-best-practices-matter">Why Best Practices Matter</a></li>
+  <li><a href="#why-best-practices-matter-cont." id="toc-why-best-practices-matter-cont." class="nav-link" data-scroll-target="#why-best-practices-matter-cont.">Why Best Practices Matter (cont.)</a></li>
+  <li><a href="#what-are-these-best-practices" id="toc-what-are-these-best-practices" class="nav-link" data-scroll-target="#what-are-these-best-practices">What are these Best Practices?</a></li>
+  <li><a href="#what-are-these-best-practices-1" id="toc-what-are-these-best-practices-1" class="nav-link" data-scroll-target="#what-are-these-best-practices-1">What are these Best Practices?</a></li>
+  <li><a href="#what-are-these-best-practices-2" id="toc-what-are-these-best-practices-2" class="nav-link" data-scroll-target="#what-are-these-best-practices-2">What are these Best Practices?</a></li>
+  </ul></li>
+  <li><a href="#best-practice-1-philosophical-underpinnings" id="toc-best-practice-1-philosophical-underpinnings" class="nav-link" data-scroll-target="#best-practice-1-philosophical-underpinnings">Best Practice #1: <br> Philosophical Underpinnings</a>
+  <ul class="collapse">
+  <li><a href="#core-philosophies" id="toc-core-philosophies" class="nav-link" data-scroll-target="#core-philosophies">Core Philosophies</a></li>
+  </ul></li>
+  <li><a href="#best-practice-2-reproducibility" id="toc-best-practice-2-reproducibility" class="nav-link" data-scroll-target="#best-practice-2-reproducibility">Best Practice #2: <br> Reproducibility</a>
+  <ul class="collapse">
+  <li><a href="#what-is-reproducibility" id="toc-what-is-reproducibility" class="nav-link" data-scroll-target="#what-is-reproducibility">What is Reproducibility</a></li>
+  <li><a href="#fair-principles-and-reproducibility" id="toc-fair-principles-and-reproducibility" class="nav-link" data-scroll-target="#fair-principles-and-reproducibility">FAIR Principles and Reproducibility</a></li>
+  <li><a href="#fair-and-care" id="toc-fair-and-care" class="nav-link" data-scroll-target="#fair-and-care">FAIR and CARE</a></li>
+  <li><a href="#fair-principles-and-reproducibility-1" id="toc-fair-principles-and-reproducibility-1" class="nav-link" data-scroll-target="#fair-principles-and-reproducibility-1">FAIR Principles and Reproducibility</a></li>
+  <li><a href="#reproducible-workflows" id="toc-reproducible-workflows" class="nav-link" data-scroll-target="#reproducible-workflows">Reproducible Workflows</a></li>
+  <li><a href="#the-reproducibility-spectrum" id="toc-the-reproducibility-spectrum" class="nav-link" data-scroll-target="#the-reproducibility-spectrum">The Reproducibility Spectrum</a></li>
+  </ul></li>
+  <li><a href="#best-practice-3-tool-choices" id="toc-best-practice-3-tool-choices" class="nav-link" data-scroll-target="#best-practice-3-tool-choices">Best Practice #3: <br> Tool Choices</a>
+  <ul class="collapse">
+  <li><a href="#why-r-and-not-other-tools" id="toc-why-r-and-not-other-tools" class="nav-link" data-scroll-target="#why-r-and-not-other-tools">Why R (and not other tools)?</a></li>
+  <li><a href="#r-vs.-alternatives-for-health-research" id="toc-r-vs.-alternatives-for-health-research" class="nav-link" data-scroll-target="#r-vs.-alternatives-for-health-research">R vs.&nbsp;Alternatives for Health Research</a></li>
+  <li><a href="#the-r-ecosystem" id="toc-the-r-ecosystem" class="nav-link" data-scroll-target="#the-r-ecosystem">The R Ecosystem</a></li>
+  </ul></li>
+  <li><a href="#best-practice-4-literate-programming" id="toc-best-practice-4-literate-programming" class="nav-link" data-scroll-target="#best-practice-4-literate-programming">Best Practice #4: <br> Literate Programming</a>
+  <ul class="collapse">
+  <li><a href="#what-is-literate-programming" id="toc-what-is-literate-programming" class="nav-link" data-scroll-target="#what-is-literate-programming">What is Literate Programming?</a>
+  <ul class="collapse">
+  <li><a href="#the-concept-donald-knuth-1984" id="toc-the-concept-donald-knuth-1984" class="nav-link" data-scroll-target="#the-concept-donald-knuth-1984">The Concept (Donald Knuth, 1984)</a></li>
+  </ul></li>
+  <li><a href="#in-practice-quartor-markdown" id="toc-in-practice-quartor-markdown" class="nav-link" data-scroll-target="#in-practice-quartor-markdown">In Practice: Quarto/R Markdown</a></li>
+  </ul></li>
+  <li><a href="#best-practice-5-structure-consistency" id="toc-best-practice-5-structure-consistency" class="nav-link" data-scroll-target="#best-practice-5-structure-consistency">Best Practice #5: <br> Structure &amp; Consistency</a>
+  <ul class="collapse">
+  <li><a href="#project-organization" id="toc-project-organization" class="nav-link" data-scroll-target="#project-organization">Project Organization</a>
+  <ul class="collapse">
+  <li><a href="#standard-directory-structure" id="toc-standard-directory-structure" class="nav-link" data-scroll-target="#standard-directory-structure">Standard Directory Structure</a></li>
+  </ul></li>
+  <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions">Naming Conventions</a></li>
+  <li><a href="#naming-conventions-1" id="toc-naming-conventions-1" class="nav-link" data-scroll-target="#naming-conventions-1">Naming Conventions</a></li>
+  <li><a href="#naming-conventions-cont." id="toc-naming-conventions-cont." class="nav-link" data-scroll-target="#naming-conventions-cont.">Naming Conventions (cont.)</a></li>
+  <li><a href="#naming-conventions-2" id="toc-naming-conventions-2" class="nav-link" data-scroll-target="#naming-conventions-2">Naming Conventions</a></li>
+  </ul></li>
+  <li><a href="#best-practice-6-coding-style" id="toc-best-practice-6-coding-style" class="nav-link" data-scroll-target="#best-practice-6-coding-style">Best Practice #6: Coding Style</a>
+  <ul class="collapse">
+  <li><a href="#why-coding-style-matters" id="toc-why-coding-style-matters" class="nav-link" data-scroll-target="#why-coding-style-matters">Why Coding Style Matters</a>
+  <ul class="collapse">
+  <li><a href="#the-google-r-style-guide-approach" id="toc-the-google-r-style-guide-approach" class="nav-link" data-scroll-target="#the-google-r-style-guide-approach">The Google R Style Guide Approach</a></li>
+  </ul></li>
+  <li><a href="#example-good-vs.-bad" id="toc-example-good-vs.-bad" class="nav-link" data-scroll-target="#example-good-vs.-bad">Example: Good vs.&nbsp;Bad</a></li>
+  </ul></li>
+  <li><a href="#best-practice-7-tidy-philosophy" id="toc-best-practice-7-tidy-philosophy" class="nav-link" data-scroll-target="#best-practice-7-tidy-philosophy">Best Practice #7: Tidy Philosophy</a>
+  <ul class="collapse">
+  <li><a href="#what-is-tidy-data" id="toc-what-is-tidy-data" class="nav-link" data-scroll-target="#what-is-tidy-data">What is “Tidy Data”?</a></li>
+  <li><a href="#hadley-wickhams-principles" id="toc-hadley-wickhams-principles" class="nav-link" data-scroll-target="#hadley-wickhams-principles">Hadley Wickham’s Principles</a></li>
+  <li><a href="#why-tidy-data-matters-for-your-analysis" id="toc-why-tidy-data-matters-for-your-analysis" class="nav-link" data-scroll-target="#why-tidy-data-matters-for-your-analysis">Why Tidy Data Matters for Your Analysis</a></li>
+  <li><a href="#converting-messy-to-tidy" id="toc-converting-messy-to-tidy" class="nav-link" data-scroll-target="#converting-messy-to-tidy">Converting Messy to Tidy</a></li>
+  </ul></li>
+  <li><a href="#best-practice-8-open-to-learning" id="toc-best-practice-8-open-to-learning" class="nav-link" data-scroll-target="#best-practice-8-open-to-learning">Best Practice #8: Open to Learning</a>
+  <ul class="collapse">
+  <li><a href="#continuous-improvement-mindset" id="toc-continuous-improvement-mindset" class="nav-link" data-scroll-target="#continuous-improvement-mindset">Continuous Improvement Mindset</a></li>
+  <li><a href="#continuous-improvement-mindset-cont." id="toc-continuous-improvement-mindset-cont." class="nav-link" data-scroll-target="#continuous-improvement-mindset-cont.">Continuous Improvement Mindset (cont.)</a>
+  <ul class="collapse">
+  <li><a href="#learning-strategies-for-trainers" id="toc-learning-strategies-for-trainers" class="nav-link" data-scroll-target="#learning-strategies-for-trainers">Learning Strategies for Trainers</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#best-practice-9-prompting-ai-well" id="toc-best-practice-9-prompting-ai-well" class="nav-link" data-scroll-target="#best-practice-9-prompting-ai-well">Best Practice #9: Prompting AI Well</a>
+  <ul class="collapse">
+  <li><a href="#ai-is-now-part-of-the-workflow" id="toc-ai-is-now-part-of-the-workflow" class="nav-link" data-scroll-target="#ai-is-now-part-of-the-workflow">AI is Now Part of the Workflow</a></li>
+  <li><a href="#four-prompting-strategies" id="toc-four-prompting-strategies" class="nav-link" data-scroll-target="#four-prompting-strategies">Four prompting strategies</a></li>
+  <li><a href="#example-vague-vs.-briefed" id="toc-example-vague-vs.-briefed" class="nav-link" data-scroll-target="#example-vague-vs.-briefed">Example: Vague vs.&nbsp;Briefed</a></li>
+  <li><a href="#iterate-do-not-perfect" id="toc-iterate-do-not-perfect" class="nav-link" data-scroll-target="#iterate-do-not-perfect">Iterate, Do Not Perfect</a></li>
+  <li><a href="#prompting-is-part-of-your-methods" id="toc-prompting-is-part-of-your-methods" class="nav-link" data-scroll-target="#prompting-is-part-of-your-methods">Prompting is Part of Your Methods</a></li>
+  </ul></li>
+  <li><a href="#best-practice-10-sharecollaborateacknowledge" id="toc-best-practice-10-sharecollaborateacknowledge" class="nav-link" data-scroll-target="#best-practice-10-sharecollaborateacknowledge">Best Practice #10: Share/Collaborate/Acknowledge</a>
+  <ul class="collapse">
+  <li><a href="#benefits-of-sharing-and-acknowledging" id="toc-benefits-of-sharing-and-acknowledging" class="nav-link" data-scroll-target="#benefits-of-sharing-and-acknowledging">Benefits of Sharing and Acknowledging</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions?</a></li>
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank You</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides-session2-best-practices.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="slides-session2-best-practices.html"><i class="bi bi-easel2"></i>View as slides</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./session2-best-practices.html">Session-II · Best Practices</a></li><li class="breadcrumb-item"><a href="./session2-best-practices.html">Best Practices in Data Science</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Best Practices in Data Science</h1>
+<p class="subtitle lead">DMgtAsia · Session-II</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="why-the-need-for-best-practices" class="level1">
+<h1>Why the need for Best Practices?</h1>
+<section id="genesis" class="level2">
+<h2 class="anchored" data-anchor-id="genesis">Genesis</h2>
+<ul>
+<li><strong>Digital Platforms for Disease Surveillance and Control: Best Practices from Asia</strong> (DMgtAsia)</li>
+<li>Bridge the gap between public health and technology</li>
+<li>Post COVID-19: Need for data-driven decision-making at scale</li>
+<li>Limited training capacity in LMICs in this area</li>
+<li>Develop standardized, reproducible best practices that can be adapted globally</li>
+</ul>
+</section>
+<section id="why-best-practices-matter" class="level2">
+<h2 class="anchored" data-anchor-id="why-best-practices-matter">Why Best Practices Matter</h2>
+<p><br></p>
+<ul>
+<li>Provide Guidance to navigate the complexities of data science</li>
+<li>Plethora of information on Data Science available, without clear direction</li>
+<li>Handholding in your learning journey, not learning in isolation</li>
+<li>Steep Learning Curve: structured pathways reduce frustration</li>
+</ul>
+<hr>
+</section>
+<section id="why-best-practices-matter-cont." class="level2">
+<h2 class="anchored" data-anchor-id="why-best-practices-matter-cont.">Why Best Practices Matter (cont.)</h2>
+<p><br></p>
+<ul>
+<li>Inevitable use of AI: a Human in the Loop approach</li>
+<li>Set you apart from the crowd: credibility through proven methods</li>
+<li>Consistency among trainers, to maintain quality</li>
+</ul>
+</section>
+<section id="what-are-these-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-these-best-practices">What are these Best Practices?</h2>
+<p><br></p>
+<ul>
+<li><strong>Based on a Scientific Approach</strong>
+<ul>
+<li>Grounded in epidemiological principles and data science methodology</li>
+<li>Validated in the real-world and through peer-reviewed literature</li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>Tried &amp; Tested for over a decade of working in this Area</strong>
+<ul>
+<li>SCTIMST: Public Health Technologies Training Modules</li>
+<li>Resource Faculty: Years of collective experience in teaching</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-are-these-best-practices-1" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-these-best-practices-1">What are these Best Practices?</h2>
+<p><br></p>
+<ul>
+<li><strong>Walk the Talk</strong>
+<ul>
+<li>We actively use these practices in our day-to-day teaching &amp; research</li>
+<li>We make conscious decisions to use these best practices in our own work</li>
+<li>Self critique and Support one another</li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>Worked for over 300+ learners from over 75+ institutions</strong>
+<ul>
+<li>Medical professionals, informaticians, data scientists, healthcare workers</li>
+<li>Recognised a Best Practice in Public Health Teaching (IAPSMCON-2024)</li>
+<li>Multiple Verticals</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-are-these-best-practices-2" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-these-best-practices-2">What are these Best Practices?</h2>
+<p><br></p>
+<ul>
+<li><strong>State of the Art tools</strong>
+<ul>
+<li>R: Developed by and for statisticians and epidemiologists</li>
+<li><code>tidyverse</code>: Industry-standard for reproducible workflows</li>
+<li>Quarto: A Language Agnostic Dynamic Authoring Framework</li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>Industry Standard</strong>
+<ul>
+<li>Aligns with international best practices</li>
+<li>Recognized by WHO, CDC, UNICEF, and global health agencies</li>
+<li>Facilitates collaboration with other research teams</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="best-practice-1-philosophical-underpinnings" class="level1">
+<h1>Best Practice #1: <br> Philosophical Underpinnings</h1>
+<section id="core-philosophies" class="level2">
+<h2 class="anchored" data-anchor-id="core-philosophies">Core Philosophies</h2>
+<div class="fragment">
+<blockquote class="blockquote">
+<p><strong>Data Science is a Tool for Social Good, Not an End in Itself</strong></p>
+</blockquote>
+</div>
+<div class="fragment">
+<blockquote class="blockquote">
+<p><strong>Data for Better Lives</strong></p>
+</blockquote>
+</div>
+<div class="fragment">
+<blockquote class="blockquote">
+<p><strong>3D Commission Recommendations</strong></p>
+</blockquote>
+</div>
+<div class="fragment">
+<blockquote class="blockquote">
+<p><strong>FAIR</strong> Data Principles</p>
+</blockquote>
+</div>
+<div class="fragment">
+<ul>
+<li>The Public Health Lens</li>
+<li>Bridging Disciplines</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="best-practice-2-reproducibility" class="level1">
+<h1>Best Practice #2: <br> Reproducibility</h1>
+<section id="what-is-reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-reproducibility">What is Reproducibility</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="fair-principles-and-reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="fair-principles-and-reproducibility">FAIR Principles and Reproducibility</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="fair-and-care" class="level2">
+<h2 class="anchored" data-anchor-id="fair-and-care">FAIR and CARE</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FAIR_CARE.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="fair-principles-and-reproducibility-1" class="level2">
+<h2 class="anchored" data-anchor-id="fair-principles-and-reproducibility-1">FAIR Principles and Reproducibility</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-6.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="reproducible-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="reproducible-workflows">Reproducible Workflows</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="the-reproducibility-spectrum" class="level2">
+<h2 class="anchored" data-anchor-id="the-reproducibility-spectrum">The Reproducibility Spectrum</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="best-practice-3-tool-choices" class="level1">
+<h1>Best Practice #3: <br> Tool Choices</h1>
+<section id="why-r-and-not-other-tools" class="level2">
+<h2 class="anchored" data-anchor-id="why-r-and-not-other-tools">Why R (and not other tools)?</h2>
+<p><br></p>
+<div class="incremental">
+<ul class="incremental">
+<li>Born from S language, specifically designed for statistical analysis</li>
+<li>The global epidemiology and biostatistics community uses R</li>
+<li>Hundreds of packages for health research</li>
+<li>Open-source: you can see how calculations are done</li>
+<li>Windows, Mac, Linux: runs even on older computers</li>
+<li>Thousands of tutorials, Stack Overflow answers</li>
+</ul>
+</div>
+</section>
+<section id="r-vs.-alternatives-for-health-research" class="level2">
+<h2 class="anchored" data-anchor-id="r-vs.-alternatives-for-health-research">R vs.&nbsp;Alternatives for Health Research</h2>
+<div class="incremental">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 36%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Strength</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Excel</strong></td>
+<td>Accessible, intuitive</td>
+<td>Prone to errors, not reproducible</td>
+</tr>
+<tr class="even">
+<td><strong>SPSS/Stata</strong></td>
+<td>User-friendly GUI</td>
+<td>Expensive, less transparent, limited Customization Options</td>
+</tr>
+<tr class="odd">
+<td><strong>Tableau/Jamovi</strong></td>
+<td>Less Expensive than others</td>
+<td>Limited Analysis Options</td>
+</tr>
+<tr class="even">
+<td><strong>Python</strong></td>
+<td>General-purpose, flexible</td>
+<td>Steeper learning curve for epidemiologists</td>
+</tr>
+<tr class="odd">
+<td><strong>R</strong></td>
+<td>Purpose-built for stats, reproducible, free</td>
+<td>Slightly steeper initial learning curve</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="the-r-ecosystem" class="level2">
+<h2 class="anchored" data-anchor-id="the-r-ecosystem">The R Ecosystem</h2>
+<p><br></p>
+<ul>
+<li><strong>R Programming Language</strong>: The Engine!</li>
+<li><strong>RStudio IDE</strong>: The Dashboard!</li>
+<li><strong>Quarto/R Markdown</strong>: Combine narrative text + code + output (reproducible documents)</li>
+<li><strong><code>tidyverse</code></strong>: Collection of R packages designed for modern data workflows</li>
+</ul>
+</section>
+</section>
+<section id="best-practice-4-literate-programming" class="level1">
+<h1>Best Practice #4: <br> Literate Programming</h1>
+<section id="what-is-literate-programming" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-literate-programming">What is Literate Programming?</h2>
+<blockquote class="blockquote">
+<p><strong>Code + Narrative + Output = Single Document</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Start with a DATA DICTIONARY</strong></p>
+</blockquote>
+<section id="the-concept-donald-knuth-1984" class="level3">
+<h3 class="anchored" data-anchor-id="the-concept-donald-knuth-1984">The Concept (Donald Knuth, 1984)</h3>
+<ul>
+<li>Programs should be written for people to read, not just for machines to execute</li>
+<li>Mix explanation with code</li>
+<li>Generate analysis reports that are reproducible and transparent</li>
+</ul>
+</section>
+</section>
+<section id="in-practice-quartor-markdown" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="in-practice-quartor-markdown">In Practice: Quarto/R Markdown</h2>
+<p>Write it once. The document weaves narrative, code, and output together:</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="codewindow quarto">
+<p>attack_rates.qmd</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Age-Stratified Attack Rates</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Attack rates by age group for the Sholayur Acute Gastroenteritis outbreak.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Preparation</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>age_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"family_members.csv"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">factor</span>(age_group,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0-4"</span>, <span class="st">"5-17"</span>, <span class="st">"18-64"</span>, <span class="st">"65+"</span>)))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>age_data <span class="sc">|&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_group) <span class="sc">|&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_symptomatic =</span> <span class="fu">sum</span>(symptomatic, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_total       =</span> <span class="fu">n</span>(),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">attack_rate   =</span> n_symptomatic <span class="sc">/</span> n_total <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/attack_rates_render.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:88.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="best-practice-5-structure-consistency" class="level1">
+<h1>Best Practice #5: <br> Structure &amp; Consistency</h1>
+<section id="project-organization" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="project-organization">Project Organization</h2>
+<p><strong>A well-organized project is a well-organized mind.</strong></p>
+<section id="standard-directory-structure" class="level3">
+<h3 class="anchored" data-anchor-id="standard-directory-structure">Standard Directory Structure</h3>
+<pre><code>my_analysis/
+├── README.md              # Project overview
+├── data/
+│   ├── raw/              # Never modify
+│   │   └── gastroenteritis_sholayur.csv
+│   ├── processed/        # Cleaned, validated data
+│   │   └── gastroenteritis_clean.csv
+│   └── data_dictionary.md
+├── scripts/
+│   ├── 01_data_cleaning.R
+│   ├── 02_descriptive_analysis.R
+│   └── 03_inferential_stats.R
+├── results/
+│   ├── tables/
+│   ├── figures/
+│   └── outputs/
+├── reports/
+│   ├── outbreak_report.qmd
+│   └── outbreak_report.html
+├── docs/
+│   ├── protocol_v3.pdf
+│   └── iec_approval.pdf
+└── .gitignore</code></pre>
+</section>
+</section>
+<section id="naming-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="naming-conventions">Naming Conventions</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/case_sensitive.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="naming-conventions-1" class="level2">
+<h2 class="anchored" data-anchor-id="naming-conventions-1">Naming Conventions</h2>
+<ul>
+<li><strong>Scripts</strong>:
+<ul>
+<li><code>stroke_data_exploration.R</code>, <code>dengue_data_visualization.R</code>, instead of <code>scrpit1</code>, <code>script2</code></li>
+<li>Can consider <code>01_</code>, <code>02_</code> … for indicating sequential execution</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="naming-conventions-cont." class="level2">
+<h2 class="anchored" data-anchor-id="naming-conventions-cont.">Naming Conventions (cont.)</h2>
+<div class="fragment">
+<ul>
+<li><strong>Variables</strong>:
+<ul>
+<li><code>age_group</code> not <code>ageGrp</code> or <code>AgGr</code> (consistency matters)</li>
+<li>Do not start variable names with numbers</li>
+<li>Consider adding prefix/suffix to indicate variable type (<code>state_fct</code>, <code>age_group_chr</code>)</li>
+<li><code>dem_q1</code>, <code>dem_q2</code>, <code>dem_q3</code>, <code>health_financing_q1</code>, <code>health_financing_q2</code></li>
+<li>Add variable labels if necessary using the <code>labelled</code> package</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/janitor.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="naming-conventions-2" class="level2">
+<h2 class="anchored" data-anchor-id="naming-conventions-2">Naming Conventions</h2>
+<ul>
+<li><strong>Files</strong>:
+<ul>
+<li><code>outbreak_analysis_2025_11_07.R</code> (date in YYYY_MM_DD format)</li>
+</ul></li>
+<li><strong>Dates</strong>:
+<ul>
+<li>Always ISO 8601 (YYYY-MM-DD) in code for consistency across regions</li>
+<li>Use <code>_date</code> suffix for indicating dates</li>
+</ul></li>
+<li><strong>Versions</strong>:
+<ul>
+<li>Use version for better management <code>outbreak_analysis_2025_11_07_v2.R</code> instead of <code>outbreak_analysis_2025_11_07_final_final.R</code></li>
+</ul></li>
+</ul>
+<hr>
+<p><img src="images/paste-5.png" class="img-fluid"></p>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/allison-horst-code-kitchen.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="best-practice-6-coding-style" class="level1">
+<h1>Best Practice #6: Coding Style</h1>
+<section id="why-coding-style-matters" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="why-coding-style-matters">Why Coding Style Matters</h2>
+<p><strong>Code is read 10x more often than it’s written.</strong></p>
+<section id="the-google-r-style-guide-approach" class="level3">
+<h3 class="anchored" data-anchor-id="the-google-r-style-guide-approach">The Google R Style Guide Approach</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GOOD: Clear, readable, consistent</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>calculate_attack_rate <span class="ot">&lt;-</span> <span class="cf">function</span>(symptomatic_count, total_count) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate attack rate as percentage</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Args:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   symptomatic_count: Number of symptomatic individuals</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   total_count: Total population at risk</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns:</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   Attack rate as percentage (0-100)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (total_count <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NA</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  (symptomatic_count <span class="sc">/</span> total_count) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># BAD: Unclear naming, no comments</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>ar <span class="ot">&lt;-</span> <span class="cf">function</span>(s, t) {</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  (s<span class="sc">/</span>t)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="example-good-vs.-bad" class="level2">
+<h2 class="anchored" data-anchor-id="example-good-vs.-bad">Example: Good vs.&nbsp;Bad</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Bad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Good</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'file.csv'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>ag<span class="ot">&lt;-</span><span class="fu">cut</span>(d<span class="sc">$</span>a,<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">18</span>,<span class="dv">65</span>,<span class="dv">150</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>ar<span class="ot">&lt;-</span><span class="fu">ifelse</span>(d<span class="sc">$</span>d<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>)<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>d<span class="sc">$</span>t</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This script creates age_group variable from age column</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Packages</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, here)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Data</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>age_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"age_sholayur.csv"</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create age groups with meaningful labels</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>age_data <span class="ot">&lt;-</span> age_data <span class="sc">|&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">case_when</span>(age <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">~</span>  <span class="st">"0-4"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                          age <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">~</span>  <span class="st">"5-17"</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                          age <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span>  <span class="st">"18-64"</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                          age <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">~</span>  <span class="st">"65+"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">factor</span>(age_group, </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0-4"</span>, <span class="st">"5-17"</span>, <span class="st">"18-64"</span>, <span class="st">"65+"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="er">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="best-practice-7-tidy-philosophy" class="level1 page-columns page-full">
+<h1>Best Practice #7: Tidy Philosophy</h1>
+<section id="what-is-tidy-data" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-tidy-data">What is “Tidy Data”?</h2>
+<p><strong>A standardized way to structure datasets for analysis.</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-9.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="hadley-wickhams-principles" class="level2">
+<h2 class="anchored" data-anchor-id="hadley-wickhams-principles">Hadley Wickham’s Principles</h2>
+<ol type="1">
+<li><strong>Each variable is a column</strong></li>
+<li><strong>Each observation is a row</strong></li>
+<li><strong>Each value has its own cell</strong></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-8.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-10.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-11.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="why-tidy-data-matters-for-your-analysis" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="why-tidy-data-matters-for-your-analysis">Why Tidy Data Matters for Your Analysis</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-12.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Source: <em>Hadley Wickham and Garrett Grolemund. 2017. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data (1st. ed.). O’Reilly Media, Inc.</em></p>
+</div></div></section>
+<section id="converting-messy-to-tidy" class="level2">
+<h2 class="anchored" data-anchor-id="converting-messy-to-tidy">Converting Messy to Tidy</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-13.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="best-practice-8-open-to-learning" class="level1">
+<h1>Best Practice #8: Open to Learning</h1>
+<section id="continuous-improvement-mindset" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-improvement-mindset">Continuous Improvement Mindset</h2>
+<p><strong>Data Science and Public Health are Evolving Fields</strong></p>
+<ul>
+<li>Embrace Change, Manage It Thoughtfully</li>
+<li>Avoid Common Pitfalls</li>
+</ul>
+<hr>
+</section>
+<section id="continuous-improvement-mindset-cont." class="level2">
+<h2 class="anchored" data-anchor-id="continuous-improvement-mindset-cont.">Continuous Improvement Mindset (cont.)</h2>
+<section id="learning-strategies-for-trainers" class="level3">
+<h3 class="anchored" data-anchor-id="learning-strategies-for-trainers">Learning Strategies for Trainers</h3>
+<ul>
+<li>Read widely</li>
+<li>Experiment safely</li>
+<li>Document lessons learned</li>
+<li>Peer review</li>
+<li>Stay grounded</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="best-practice-9-prompting-ai-well" class="level1">
+<h1>Best Practice #9: Prompting AI Well</h1>
+<section id="ai-is-now-part-of-the-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="ai-is-now-part-of-the-workflow">AI is Now Part of the Workflow</h2>
+<p><strong>The use of AI is inevitable. Using it well is a choice.</strong></p>
+<ul>
+<li>It writes code, drafts text, and explains errors in seconds</li>
+<li>But it is fluent and confident even when it is wrong</li>
+<li>What you get back depends on the quality of what you ask for</li>
+<li>Stay the Human in the Loop: AI assists, you decide</li>
+</ul>
+<div class="fragment">
+<blockquote class="blockquote">
+<p>The prompt, not the model, decides whether the output is any good.</p>
+</blockquote>
+</div>
+</section>
+<section id="four-prompting-strategies" class="level2">
+<h2 class="anchored" data-anchor-id="four-prompting-strategies">Four prompting strategies</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Strategy</th>
+<th>What it is</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Zero-shot</strong></td>
+<td>Just ask, no examples</td>
+<td>Descriptive stats</td>
+</tr>
+<tr class="even">
+<td><strong>Explicit</strong></td>
+<td>Numbered steps incl.&nbsp;checks</td>
+<td>Workflows that mustn’t skip steps</td>
+</tr>
+<tr class="odd">
+<td><strong>Chain-of-thought</strong></td>
+<td>“Think step by step”</td>
+<td>Auditing the reasoning</td>
+</tr>
+<tr class="even">
+<td><strong>Hybrid</strong></td>
+<td>Steps + reasoning + format</td>
+<td><strong>Inferential — the default</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><strong>Rule of thumb:</strong> descriptive → zero-shot; inferential → <strong>hybrid</strong>.</p>
+</div>
+</section>
+<section id="example-vague-vs.-briefed" class="level2">
+<h2 class="anchored" data-anchor-id="example-vague-vs.-briefed">Example: Vague vs.&nbsp;Briefed</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Vague</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Briefed</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<pre class="text"><code>Analyse this data and run a t-test.</code></pre>
+<p>Skips the assumptions, guesses the design, picks a test for you.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<pre class="text"><code>You are a biostatistician.
+&lt;context&gt; two-arm trial, 20 patients per arm,
+outcome is systolic blood pressure &lt;/context&gt;
+&lt;data&gt; ... &lt;/data&gt;
+
+1. Test for normality and equal variance.
+2. Choose the correct test and justify it.
+3. Report a table: statistic, df, p-value, 95% CI.
+4. Interpret in plain language.</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="iterate-do-not-perfect" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="iterate-do-not-perfect">Iterate, Do Not Perfect</h2>
+<ul>
+<li>The first answer is the average answer; the second is usually better</li>
+<li>Refine in small steps rather than crafting one perfect prompt</li>
+<li>Ask for alternatives and for the reasoning, not just the result</li>
+<li>Resist sycophancy: ask the model to critique, not to confirm
+<ul>
+<li>“Grade this analysis against these criteria” beats “this looks fine, right?”</li>
+</ul></li>
+</ul>
+</section>
+<section id="prompting-is-part-of-your-methods" class="level2">
+<h2 class="anchored" data-anchor-id="prompting-is-part-of-your-methods">Prompting is Part of Your Methods</h2>
+<p>The same discipline as Reproducibility (#2) and Literate Programming (#4).</p>
+<ul>
+<li><strong>Save the prompts</strong> that worked, inside the project (<code>prompts/</code>)</li>
+<li><strong>Record</strong> the model, its version, and the date</li>
+<li><strong>Set a low temperature</strong> for analysis you must reproduce</li>
+<li><strong>Validate every AI-generated number in R</strong> before it enters a report</li>
+<li><strong>Never paste identifiable patient data</strong> into a cloud LLM</li>
+</ul>
+<div class="fragment">
+<blockquote class="blockquote">
+<p>Problem formulation beats perfect wording. Think first, prompt second.</p>
+</blockquote>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/C.R.A.F.T-Prompt.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/race-prompting-framework.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/context-engineering.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="best-practice-10-sharecollaborateacknowledge" class="level1">
+<h1>Best Practice #10: Share/Collaborate/Acknowledge</h1>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-7.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<section id="benefits-of-sharing-and-acknowledging" class="level2">
+<h2 class="anchored" data-anchor-id="benefits-of-sharing-and-acknowledging">Benefits of Sharing and Acknowledging</h2>
+<ul>
+<li>No single person has all the expertise needed in public health data science.</li>
+<li>Opportunity to learn from peers</li>
+<li>Improves your credibility &amp; citations</li>
+<li>Opens avenues for collaboration</li>
+<li>Self Marketing!</li>
+</ul>
+</section>
+</section>
+<section id="questions" class="level1">
+<h1>Questions?</h1>
+</section>
+<section id="thank-you" class="level1">
+<h1>Thank You</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>DMgtAsia · Introduction to R &amp; RStudio</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>AIIMS Bibinagar · SCTIMST, Trivandrum</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
